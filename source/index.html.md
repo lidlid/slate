@@ -1,5 +1,5 @@
 ---
-title: API Reference
+title: Sodyo SDK Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
@@ -8,8 +8,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='mailto:portalsupport@sodyo.com'>Support</a>
+  - <a href='https://www.sodyo.com'>Documentation Powered by Sodyo</a>
 
 includes:
   - errors
