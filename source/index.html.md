@@ -10,7 +10,6 @@ toc_footers:
   - <a href='https://www.sodyo.com'>Documentation Powered by Sodyo</a>
 
 includes:
-  - errors
 
 search: true
 ---
@@ -32,25 +31,29 @@ instantly receives additional information about a product or service.
 content choices offered on the TV – favorite singer, favorite news story or whatever poll or vote
 your TV station offers.
 
-# The Sodyo SDK
+# About the Sodyo SDK
+
+## Purpose
 With Sodyo’s SDK, your mobile phone application can now "see" from a distance and recognize any
 2D/3D item in the physical world. Apply a Sodyo code to any indoor/outdoor item, place or media display and your mobile device will detect and interact with it from up to dozens of meters.
-The Sodyo SDK allows application developers to connect their app's data to Sodyo codes.
 
-# Components of the SDK
+The Sodyo SDK allows application developers to connect their application's data to Sodyo codes.
+
+## Components
 Sodyo’s SDK is a software library that can be easily integrated into any mobile application to provide the ability to scan and receive interactive content. As part of the SDK Sodyo provides:
+
 * A software library for iOS / Android
+
 * An example application that shows the developer how to use the SDK
 
 ## Example Projects
 Sodyo provides example projects for iOS and Android to be used as a reference for developers.
 
 iOS: An example project is available [here](https://github.com/SodyoSDK/SodyoSDKPod).
+
 Android: An example project is available [here](https://bitbucket.org/sodyodevteam/sodyosdkexample-android.git)
 
-# System Description and Workflow
-
-## General
+## System Description and Workflow
 The Sodyo system consists of the SDK integrated in a mobile application, the Sodyo Server and Sodyo’s Portal / content management system.
 
 ## Operational Scenario
@@ -61,301 +64,320 @@ The Sodyo system consists of the SDK integrated in a mobile application, the Sod
 * Once a Sodyo code is detected, the Sodyo SDK will deliver the interactive content associated with
 the scanned code to the mobile application.
 
-# Supported Platforms
+## Supported Platforms
 Sodyo currently runs on iOS 9 and higher as well as on Android 4.1 and higher (minSdkVersion >= 16
 and targetSdkVersion <=24).
 
 We have language bindings in Java for Android Developers and Objective C for iOS developers. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
-# Supported Languages
+## Supported Languages
 Sodyo currently supports English. The language displayed on Sodyo user interface is determined by the language set in the device's settings.
 
 If the language set on the device is different than the supported languages, the Sodyo user interface will default to English.
 
-# License Agreement
-By opening the package, downloading the product or using any of its components, you are consenting to be bound by this agreement. If you do not agree to all of the terms of this agreement, do not download and install this package or proceed.
+# Sodyo License Agreement
+By opening the package, downloading the product or using any of its components, you are consenting to be bound by the [Sodyo license agreement](http://cms.sodyo.com/assets/docs/SDK_License_Agreement.pdf). 
+
+If you do not agree to all of the terms of this agreement, do not download and install this package or proceed.
 
 # Support
 Should you have any questions or need any help, please do not hesitate to contact us at
 [Support](mailto:portalsupport@sodyo.com).
 
-# SDK Functions
+# Android SDK
 
 ## Installation
-
-### Android
-Before you begin, please make sure that minSdkVersion >= 16 and targetSdkVersion <=24 (in your \app\build.gradle file).
-
-1. In your project build.gradle file the following:
+Before you begin, please make sure that the minSdkVersion >= 16 and targetSdkVersion <=24 (in your \app\build.gradle file).
 
 ```java
-allprojects {
-	repositories {
-		maven {
-			credentials {
-				//Bitbucket credentials
-				username "sodyoltd@gmail.com"
-				password "sodyo@sdk"
+	allprojects {
+		repositories {
+			maven {
+				credentials {
+					//Bitbucket credentials
+					username "sodyoltd@gmail.com"
+					password "sodyo@sdk"
+				}
+				url "https://api.bitbucket.org/1.0/repositories/sodyodevteam/sodyosdk-android/raw/releases"
 			}
-			url "https://api.bitbucket.org/1.0/repositories/sodyodevteam/sodyosdk-android/raw/releases"
+		jcenter()
 		}
-	jcenter()
 	}
-}
-```
 
-2. In your app build.gradle file add the following:
+```
+1. In your project build.gradle file add the following:
 
 ```java
 android {
 ...
 	packagingOptions {
-		exclude "META-INF/DEPENDENCIES.txt"
-		exclude "META-INF/LICENSE.txt"
-		exclude "META-INF/NOTICE.txt"
-		exclude "META-INF/NOTICE"
-		exclude "META-INF/LICENSE"
-		exclude "META-INF/DEPENDENCIES"
-		exclude "META-INF/notice.txt"
-		exclude "META-INF/license.txt"
-		exclude "META-INF/dependencies.txt"
-		exclude "META-INF/LGPL2.1"
-		exclude "META-INF/ASL2.0"
-		exclude "META-INF/maven/com.google.guava/guava/pom.properties"
-		exclude "META-INF/maven/com.google.guava/guava/pom.xml"
-	}
+	exclude "META-INF/DEPENDENCIES.txt"
+	exclude "META-INF/LICENSE.txt"
+	exclude "META-INF/NOTICE.txt"
+	exclude "META-INF/NOTICE"
+	exclude "META-INF/LICENSE"
+	exclude "META-INF/DEPENDENCIES"
+	exclude "META-INF/notice.txt"
+	exclude "META-INF/license.txt"
+	exclude "META-INF/dependencies.txt"
+	exclude "META-INF/LGPL2.1"
+	exclude "META-INF/ASL2.0"
+	exclude "META-INF/maven/com.google.guava/guava/pom.properties"
+	exclude "META-INF/maven/com.google.guava/guava/pom.xml"
+        }
 }
 dependencies {
 ...
 	compile "com.sodyo:sodyo-android-sdk:3.00.04"
 }
 ```
-### iOS
-1. Sodyo’s SDK is installed using CocoaPods. For more information on installing CocoaPods on
-your system, read [cocoapods documnetation](http://cocoapods.org).
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
-2. In your project’s pod file, add:
-``` objective_c
-pod 'SodyoSDK'
-``` 
+<ol start="2">
+<li>In your app build.gradle file add the following:</li>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</ol>
 
-3. Add an entry for NSCameraUsageDescription in your info.plist file.
+## Initialization
+Prior to launching the Sodyo Scanner, the application should initialize the Sodyo engine. This will instantiate the Sodyo SDK and load your app data that is binded with your Sodyo Markers. The initialization method should be from your Main activity class.
 
+1. Call the initialization method from your main activity onCreate():
 
-
-
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
-
-
-SDK Examples Apps
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
+```java
+import com.sodyo.sdk.Sodyo;
+@Override
+public void onCreate() {
+// init Sodyo engine App
+Sodyo.init(application, SODYO_APP_KEY, initializationCallback);
+// define a detection callback
+Sodyo.getInstance().setSodyoScannerCallback(this);
+...
+super.onCreate();
+}
 ```
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
+<br><br><br><br><br><br><br><br><br><br>
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+Parameters Description:
+
+<ul>- application: application context</ul>
+
+<ul>- SODYO_APP_KEY: the application key assigned to the account</ul>
+
+<ul>- initializationCallback: Used to provide an async callback to identify whether Sodyo SDK initialization failed or finished successfully.</ul>
 </aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
 
 <aside class="success">
-Remember — a happy kitten is an authenticated kitten!
+The <code>SODYO_APP_KEY</code> can be found in the application provider / SDK module of your account in the Sodyo Portal
 </aside>
 
-## Get a Specific Kitten
+<ol start="2">
+<li>Make your activity implement the SodyoInitCallback interface to get notified on the result of the initialization process:</li>
+</ol>
 
-```ruby
-require 'kittn'
+```java
+import com.sodyo.sdk.SodyoInitCallback;
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+public void onSodyoAppLoadSuccess();
+public void onSodyoAppLoadFailed(String error);
 ```
 
-```python
-import kittn
+<br><br><br><br><br><br><br><br>
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+## Marker Detection
+The app invokes the Sodyo Scanner to start detecting markers. Sodyo scans for Markers in the camera
+field of view and uses a callback procedure for each detected Marker. The Sodyo Scanner will keep
+running until it is finished.
+
+```java
+import com.sodyo.sdk.SodyoScannerCallback;
+
+Sodyo.getInstance().setSodyoScannerCallback(this);
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
+1. Set a callback object that implements SodyoScannerCallback and receives the scanning results.
+<br><br><br><br>
+Make your activity implement the SodyoScannerCallback interface to get notified on marker scan:
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+```java
+@Override
+public void onMarkerDetect(String data,String error) {
+...
 }
 ```
+<br><br><br><br><br>
 
-This endpoint retrieves a specific kitten.
+<ol start="2">
+<li>Launch SodyoScanner Activity using startActivityForResult(Intent, int). For example:</li>
+</ol>
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+```java
+import com.sodyo.app.SodyoScanner;
 
-### HTTP Request
+private static final int SODYO_REQUEST_CODE = 1111;
 
-`GET http://example.com/kittens/<ID>`
+Intent intent = new Intent(MainActivity.this, SodyoScanner.class);
+startActivityForResult(intent, SODYO_REQUEST_CODE);
+```
+<br><br><br><br><br><br><br>
 
-### URL Parameters
+<ol start="3">
+<li>When ready, dismiss the SodyoScanner activity using finishActivity(int requestCode). Use the
+request code that was used in the previous section. For example:</li>
+</ol>
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+```java
+finishActivity(SODYO_REQUEST_CODE);
+```
+<br><br>
 
-## Delete a Specific Kitten
+## Intent Filter
+Add additional intent filter for application to handle sodyo actions:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
+```java
+<intent-filter>
+	<action android:name="android.intent.action.VIEW"/>
+	<category android:name="android.intent.category.DEFAULT"/>
+	<category android:name="android.intent.category.BROWSABLE"/>
+	<data android:scheme="sodyo"/>
+</intent-filter>
 ```
 
-```python
-import kittn
+<br><br><br><br><br><br>
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
+## Setting Up ProGuard
+Add the following lines to your project’s proguard-rules.pro file:
+
+```java
+-dontwarn com.sodyo.**
+-keep class com.crittercism.**
+-keepclassmembers class com.com.sodyo.** { *; }
 ```
 
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
+<br><br><br><br>
+
+# IOS SDK
+
+## Installation
+1. Sodyo’s SDK is installed using CocoaPods. For more information on installing CocoaPods on
+your system, read the [CocoaPods website](http://cocoapods.org).
+
+2. In your project’s pod file, add:
+
+
+```objective_c
+pod 'SodyoSDK'
 ```
 
-```javascript
-const kittn = require('kittn');
+<br><br>
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
+<ol start="3">
+<li>Add an entry for NSCameraUsageDescription in your info.plist file.</li>
+</ol>
+
+## Initialization
+Prior to launching the Sodyo Scanner, the application should initialize the Sodyo engine. This will instantiate the Sodyo SDK and load your application’s data that is binded with your Sodyo
+Markers.
+
+The initialization method should be called once in your AppDelegate or anywhere in the code.
+
+1. Include the header file:
+
+```objective_c
+#import <SodyoSDK/SodyoSDK.h>
+```
+<br><br><br>
+
+<ol start="2">
+<li>Call the initialization method:</li>
+</ol>
+
+```objective_c
+[SodyoSDK LoadApp:<SODYO_APP_KEY> Delegate:NSObject<SodyoSDKDelegate> MarkerDelegate:NS
+Object<SodyoMarkerDelegate> PresentingViewController:UIViewController*];
+```
+<br><br><br><br>
+<aside class="notice">
+Parameters Description:
+
+<ul>- SODYO_APP_KEY: the application key assigned to the account</ul>
+
+<ul>- SodyoSDKDelegate: delegate that allows getting notified on the result of the Sodyo SDK initialization process.</ul>
+
+<ul>- MarkerDelegate: An object that conforms to the SodyoMarkerDelegate protocol (see below).</ul>
+
+<ul>- PresentingViewController: For SodyoAd markers, the UIViewController that will be used to present SodyoAd’s UIViewController.</ul>
+
+</aside>
+
+<aside class="success">
+The <code>SODYO_APP_KEY</code> can be found in the application provider / SDK module of your account in the Sodyo Portal
+</aside>
+
+<ol start="3">
+<li>Optionally Implement the SodyoSDKDelegate functions below to get notified on the result of
+the initialization process</li>
+</ol>
+
+```objective_c
+(void) onSodyoAppLoadSuccess:(NSInteger)AppID;
+
+(void) onSodyoAppLoadFailed:(NSInteger)AppID error:(NSError *)error;
+```
+<br><br><br>
+
+## Marker Detection
+The application invokes the Sodyo Scanner to start detecting markers. Sodyo scans for Markers in the camera’s field of view and calls back a delegate function for each detected Marker.
+
+The Sodyo Scanner will keep running until it is dismissed.
+
+1. Launch Sodyo Marker Scanner by presenting it as a UIViewController. For example:
+
+```objective_c
+#import <SodyoSDK/SodyoSDK.h>
+...
+[self presentViewController:[SodyoSDK initSodyoScanner] animated:YES completion:nil];
+```
+<br><br><br><br><br>
+
+<ol start="2">
+<li>For data markers, implement the following delegate method. Sodyo will call this method upon a Sodyo Data Marker detection:</li>
+</ol>
+
+
+```objective_c
+- (void) SodyoMarkerDetectedWithData:(NSDictionary*)Data;
 ```
 
-> The above command returns JSON structured like this:
+<br><br><br><br>
 
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
+<aside class="notice">
+Note:
+<ul>- Data: A JSON object: {SodyoMarkerData: <string data>}</ul>
+</aside>
+
+<aside class="success">
+Not relevant when using Sodyo’s Ad platform.
+</aside>
+
+<ol start="3">
+<li>When ready, dismiss the Sodyo Marker Scanner. Use the UIViewController that you presented
+earlier. For example:</li>
+</ol>
+
+```objective_c
+[self dismissViewControllerAnimated:YES completion:nil];
 ```
 
-This endpoint deletes a specific kitten.
+<br><br><br><br><br><br><br>
 
-### HTTP Request
+# Migration
+Migrating from previous versions of the SDK
 
-`DELETE http://example.com/kittens/<ID>`
+## Android
+To upgrade from previous versions of the SDK, make sure to pull the latest version of the SDK as
+indicated in the dependencies of the app build.gradle file. In addition, change your `init` function as indicated in the initialization section.
 
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+## IOS
+To upgrade from previous versions of the SDK, make sure to perform a `POD update` operation.
 
