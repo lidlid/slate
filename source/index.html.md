@@ -1,9 +1,9 @@
 ---
-title: Sodyo SDK Reference
+title: Sodyo API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - objective_c
-  - java
+  - http
+  - shell
   
 toc_footers:
   - <a href='mailto:portalsupport@sodyo.com'>Support</a>
@@ -31,22 +31,185 @@ instantly receives additional information about a product or service.
 content choices offered on the TV – favorite singer, favorite news story or whatever poll or vote
 your TV station offers.
 
-# About the Sodyo SDK
+# About the Sodyo API
+The Sodyo API provides the mechanism to interact with the Sodyo solution directly from a customer system.
 
-## Purpose
-With Sodyo’s SDK, your mobile phone application can now "see" from a distance and recognize any
-2D/3D item in the physical world. Apply a Sodyo code to any indoor/outdoor item, place or media display and your mobile device will detect and interact with it from up to dozens of meters.
+## Overview 
+The Sodyo Server APIs enable developers to create, read, update and delete (CRUD) content and campaigns with Sodyo's Portal. Previously, these operations were only available via the Portal user interface (UI), however, there are cases that a customer will want to automate the creation of content items and campaigns, via code, to tightly integrate Sodyo with customer internal workflows and systems.
 
-The Sodyo SDK allows application developers to connect their application's data to Sodyo codes.
+Version 1.0 of the Sodyo APIs enables full campaign management and full content
+management for content of type “immediate action”. Content type of “Sodyo Ad” is not
+supported in the API at this time.
 
-## Components
-Sodyo’s SDK is a software library that can be easily integrated into any mobile application to provide the ability to scan and receive interactive content. As part of the SDK Sodyo provides:
+## API Access
+The Sodyo administrator must enable API support for a project to allow interacting with the Sodyo system. If the API is not enabled in your project, please feel free to contact us and [request API access](mailto:portalsupport@sodyo.com).
 
-* A software library for iOS / Android
+## Supported Functionality
+The main functionality provided as part of the Sodyo API v1.0 includes:
 
-* An example application that shows the developer how to use the SDK
+* Authentication
+	* The project administrator can configure API access keys to be used for integration
+	* API authentication & authorization is based on the project API access key
+* Content Operations
+	* CRUD operations on content (limited to immediate action only)
+	* Content adaptation to strict API structure
+* Campaign Operations
+	* CRUD operations on campaigns
+	* Get Sodyo marker image API
+	* Campaign activation/deactivation and status
+* Error handling
 
-## Example Projects
+# Authentication
+Sodyo enables the generation of keys for use with the API. When the Sodyo server receives a request from an application, the key hash value is used to authenticate the application with the hash value stored in the server. This provides a secure mechanism that prevents any unauthorized access to the system.
+
+<aside class="warning">
+For security reasons, Sodyo does not save the API key that is generated for use with an application. Only the hash value is saved for authentication purposes. As such, there is no way to recover the application key if lost. Follow the process below to create your key and make sure to copy and save it in a secure place for use in your code.
+</aside>
+
+## Generating an API Key
+To generate an API Key, follow the process outlined below:
+
+1. Navigate to the [Sodyo Portal](https://cms.sodyo.com) and log into your account. 
+2. Select your project.
+3. Click on Settings. If API access is enabled for your project, a tab titled "API Integration" is visible. Click the "API Integration" tab.
+
+<aside class="notice">The Settings module is only available for users that have owner or admin role in the project.</aside>
+
+![API Integration Screen](/images/APIIntScr.PNG)
+
+* In the API integration section you will see a list of currently defined API keys for the project. The following columns are shown:
+	* Key Name
+	* Key ID
+	* Key
+
+<aside class="notice">Note that the Key is not displayed. Hovering over the key will display a message that indicates that for security purposes the API key cannot be displayed</aside>
+
+<ol start="4">
+<li>Click the + sign to create a new API key. The Add New API Key Screen is displayed.</li>
+</ol>
+![API New Screen](/images/APINewScr.PNG)
+
+<ol start="5">
+<li>Name your key and click "create and view". The API Key Created Screen is displayed with the generated API key.</li>
+</ol>
+![API Created Screen](/images/APICrtScr.PNG)
+
+The Sodyo API key has the following structure: <br>
+SA​ . KEY_ID​ . HMAC_SIGNATURE (SA = Sodyo API)
+
+<ol start="6">
+<li>Click the copy button to copy the generated key for use in your application. After the key is copied click close to return to the main screen.</li>
+</ol>
+
+<aside class="warning">Make sure to copy and save you key in a secure place for use in your code. Once the window is closed, it is not possible to view the key again for security reasons. 
+</aside>
+
+![API Main Screen](/images/APIMainScr.PNG)
+
+<aside class="warning">It is possible to delete an API key by clicking the X button at the end of the row for the specific key. The user is prompted to verify the delete operation. Once deleted the key can not be used for API access.</aside>
+
+## Authentication Process
+1. Every API call to the Sodyo server includes the “​X-AUTH-TOKEN​” header with the API key value.
+2. The Sodyo Server performs the following checks to ensure authentication:
+	* Validation that the API key exists
+	* Validation of the HMAC signature
+	* If one of the validation checks fail, a <code>401-Unauthorized</code> message is returned.
+3. Every request that is authenticated, is authorized with the API role and its associated permission set. The API role is eligible to access external integration API endpoints in the
+Sodyo system. Trying to access any other endpoint will return <code>403-Forbidden</code>.
+4. As a part of the authorization process, a validation is performed to ensure that API usage is available for the project. If API usage is disabled for the project that the API key belongs to, the server will return <code>403-Forbidden</code>.
+
+
+# Additional API Information
+
+## API Endpoint Structure
+The following endpoint pattern is used for all external integration API endpoints:
+
+/integration/rest/api/​v1/entity​/{entity-id}/action
+
+Where:
+
+* First part​ is static prefix for all API calls (/integration/rest/api)
+* Second part​ is the API version number (/v1)
+* Third part​ is the entity name (/entity)
+* Fourth part​ is entity UUID (/{enitity-id})
+* Fifth part​ is an action (/action)
+
+## API Functionality
+The Sodyo API provides the ability to perform content and campaign related operations.
+
+<aside class="notice">All content & campaign operations are available for content / campaigns of type immediate action only. Referencing content / campaigns of type SODYO_AD via the API will return <code>404-Not Found</code></aside>
+
+Supported functions:
+
+### Content
+* Get all content items
+* Get content item by name
+* Get content item by UUID
+* Create contant item
+* Update contant item
+* Delete content item
+
+### Campaigns
+* Get all campaigns
+* Get campaign by name
+* Get campaign by UUID
+* Create campaign
+* Update campaign
+* Get campaign marker
+* Enable campaign
+* Disable campaign
+
+# API Reference
+
+## Get All Content
+This function returns all content items in the project
+
+> The above command returns JSON structured like this:
+
+```json
+[
+	{
+		"uuid": ​ "3d7f83f7-dcd5-4f03-ab97-2e1fb9056978"​ ,
+		"name": ​ "Call content"​ ,
+		"description": ​ "desc"​ ,
+		"content": {
+			"actionType": ​ "PHONE"​ ,
+			"params": {
+				"phone": ​ "89787978978"
+			}
+		}
+	},
+	{
+		"uuid": ​ "3d7f83f7-dcd5-4f03-ab97-2e1fb9056977"​ ,
+		"name": ​ "Data content"​ ,
+		"description": ​ "desc"​ ,
+		"content": {
+			"actionType": ​ "DATA"​ ,
+			"params": {
+				"data": ​ "89787978978"
+			}
+		}
+	}
+]```
+
+This endpoint retrieves all content items in the project.
+
+### HTTP Request
+
+`GET /integration/rest/api/v1/content`
+
+### Query Parameters
+None
+
+<aside class="success">
+Remember — a happy kitten is an authenticated kitten!
+</aside>
+
+
+
+
+
+# Old
 Sodyo provides example projects for iOS and Android to be used as a reference for developers.
 
 iOS: An example project is available [here](https://github.com/SodyoSDK/SodyoSDKPod).
