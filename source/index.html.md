@@ -3,8 +3,8 @@ title: Sodyo API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - http
-  - shell
-  
+  - shell: cURL
+
 toc_footers:
   - <a href='mailto:portalsupport@sodyo.com'>Support</a>
   - <a href='https://www.sodyo.com'>Documentation Powered by Sodyo</a>
@@ -34,17 +34,20 @@ your TV station offers.
 # About the Sodyo API
 The Sodyo API provides the mechanism to interact with the Sodyo solution directly from a customer system.
 
-## Overview 
+## Overview
 The Sodyo Server APIs enable developers to create, read, update and delete (CRUD) content and campaigns with Sodyo's Portal. Previously, these operations were only available via the Portal user interface (UI), however, there are cases that a customer will want to automate the creation of content items and campaigns, via code, to tightly integrate Sodyo with customer internal workflows and systems.
 
-Version 1.0 of the Sodyo APIs enables full campaign management and full content
-management for content of type “immediate action”. Content type of “Sodyo Ad” is not
-supported in the API at this time.
+Version 1.0 of the Sodyo APIs enables full campaign management and full content management for content of type “immediate action”. <br>
+Content type of “Sodyo Ad” is not supported in the API at this time.
 
 ## API Access
 The Sodyo administrator must enable API support for a project to allow interacting with the Sodyo system. If the API is not enabled in your project, please feel free to contact us and [request API access](mailto:portalsupport@sodyo.com).
 
 ## Supported Functionality
+The Sodyo API provides the ability to perform content and campaign related operations.
+
+<aside class="notice">All content & campaign operations are available for content / campaigns of type immediate action only. Referencing content / campaigns of type SODYO_AD via the API will return <code>404-Not Found</code></aside>
+
 The main functionality provided as part of the Sodyo API v1.0 includes:
 
 * Authentication
@@ -59,17 +62,63 @@ The main functionality provided as part of the Sodyo API v1.0 includes:
 	* Campaign activation/deactivation and status
 * Error handling
 
-# Authentication
-Sodyo enables the generation of keys for use with the API. When the Sodyo server receives a request from an application, the key hash value is used to authenticate the application with the hash value stored in the server. This provides a secure mechanism that prevents any unauthorized access to the system.
+## Supported APIs
+Supported APIs include:
 
-<aside class="warning">
-For security reasons, Sodyo does not save the API key that is generated for use with an application. Only the hash value is saved for authentication purposes. As such, there is no way to recover the application key if lost. Follow the process below to create your key and make sure to copy and save it in a secure place for use in your code.
-</aside>
+### Content
+* Get all content items
+* Get content item by name
+* Get content item by UUID
+* Create content item
+* Update content item
+* Delete content item
+
+### Campaigns
+* Get all campaigns
+* Get campaign by name
+* Get campaign by UUID
+* Create campaign
+* Update campaign
+* Get campaign marker
+* Enable campaign
+* Disable campaign
+
+# Getting Started
+
+## Prerequisites
+Before you can start using the Sodyo API, you need to do the following:
+* Create an account in the Sodyo Portal
+* Create a project in your account
+* Have the API enabled in your project by the Sodyo administrator by [contacting](mailto:portalsupport@sodyo.com) us
+* Create an API Key
+
+## Building an API Call
+An API call to the Sodyo server must include the following components:
+* The Host. The host for Sodyo API requests is always <code>cms.sodyo.com</code>. All API access is via the <code>https</code> protocol.
+* An Authorization Header
+* An API Key within the Authorization Header
+* A Request. When submitting data to a resource via POST or PUT, you must submit your payload in JSON.
+
+## API Response Messages
+All responses delivered via the Sodyo API are returned in JSON format with UTF-8 charset. This is specified by including the content-type header in responses indicating application/json;charset=UTF-8.  
+
+## API Endpoint Structure
+The following endpoint pattern is used for all external integration API endpoints:
+
+/integration/rest/api/​v1/entity​/{entity-id}/action
+
+Where:
+
+* First part​ is static prefix for all API calls (/integration/rest/api)
+* Second part​ is the API version number (/v1)
+* Third part​ is the entity name (/entity)
+* Fourth part​ is entity UUID (/{enitity-id})
+* Fifth part​ is an action (/action)
 
 ## Generating an API Key
 To generate an API Key, follow the process outlined below:
 
-1. Navigate to the [Sodyo Portal](https://cms.sodyo.com) and log into your account. 
+1. Navigate to the [Sodyo Portal](https://cms.sodyo.com) and log into your account.
 2. Select your project.
 3. Click on Settings. If API access is enabled for your project, a tab titled "API Integration" is visible. Click the "API Integration" tab.
 
@@ -101,7 +150,7 @@ SA​ . KEY_ID​ . HMAC_SIGNATURE (SA = Sodyo API)
 <li>Click the copy button to copy the generated key for use in your application. After the key is copied click close to return to the main screen.</li>
 </ol>
 
-<aside class="warning">Make sure to copy and save you key in a secure place for use in your code. Once the window is closed, it is not possible to view the key again for security reasons. 
+<aside class="warning">For security reasons, Sodyo does not save the API key that is generated for use with an application. Only the hash value is saved for authentication purposes. As such, there is no way to recover the application key if lost. Make sure to copy and save your key in a secure place for use in your code. Once the window is closed, it is not possible to view the key again.
 </aside>
 
 ![API Main Screen](/images/APIMainScr.PNG)
@@ -119,47 +168,103 @@ Sodyo system. Trying to access any other endpoint will return <code>403-Forbidde
 4. As a part of the authorization process, a validation is performed to ensure that API usage is available for the project. If API usage is disabled for the project that the API key belongs to, the server will return <code>403-Forbidden</code>.
 
 
-# Additional API Information
-
-## API Endpoint Structure
-The following endpoint pattern is used for all external integration API endpoints:
-
-/integration/rest/api/​v1/entity​/{entity-id}/action
-
-Where:
-
-* First part​ is static prefix for all API calls (/integration/rest/api)
-* Second part​ is the API version number (/v1)
-* Third part​ is the entity name (/entity)
-* Fourth part​ is entity UUID (/{enitity-id})
-* Fifth part​ is an action (/action)
-
-## API Functionality
-The Sodyo API provides the ability to perform content and campaign related operations.
-
-<aside class="notice">All content & campaign operations are available for content / campaigns of type immediate action only. Referencing content / campaigns of type SODYO_AD via the API will return <code>404-Not Found</code></aside>
-
-Supported functions:
-
-### Content
-* Get all content items
-* Get content item by name
-* Get content item by UUID
-* Create contant item
-* Update contant item
-* Delete content item
-
-### Campaigns
-* Get all campaigns
-* Get campaign by name
-* Get campaign by UUID
-* Create campaign
-* Update campaign
-* Get campaign marker
-* Enable campaign
-* Disable campaign
-
 # API Reference
+## Sodyo Web API V1
+The Sodyo API is a RESTful easy to integrate with API providing a full set of functionality for managing content and campaigns.
+
+## Example
+```shell
+  curl https://sodyo-cms.herokuapp.com/integration/rest/api/v1/content
+  -H "Content-Type: application/json"
+  -H "X-AUTH-TOKEN: Developer-API-Key"
+```
+
+> Make sure to replace `Developer-API-Key` with your API key.
+
+## Using the Sodyo Web API
+
+### Authentication
+Every request made via the Sodyo API must be authenticated by including an <code>X-AUTH-TOKEN</code> header as part of the request. The <code>X-AUTH-TOKEN</code> is the API Key assigned to the developer project in the Sodyo portal. When the Sodyo server receives a request from an application, the key hash value is used to authenticate the application with the hash value stored in the server. This provides a secure mechanism that prevents any unauthorized access to the system.
+
+```shell
+  curl https://sodyo-cms.herokuapp.com/integration/rest/api/v1/content
+  -H "Content-Type: application/json"
+  -H "X-AUTH-TOKEN: Developer-API-Key"
+```
+> Make sure to replace `Developer-API-Key` with your API key.
+
+### Requests
+All requests to the Sodyo Web API must be made via HTTPS. It is best practice to include the Content-Type: application/json header in all requests.<br>
+The Sodyo Web API is completely RESTful and accepts GET, POST, PUT, and DELETE requests, depending on the resource.
+
+```shell
+  curl -X POST "https://sodyo-cms.herokuapp.com/integration/rest/api/v1/content/"
+  -H "Content-Type: application/json"
+  -H "X-AUTH-TOKEN: Developer-API-Key"
+  -d "{\"name\": \"Call content 15\",\"description\": \"desc 15\",\"content\": {\"actionType\": \"DATA\",\"params\": {\"data\": \"blah blah blah\"}}}"
+```
+> Make sure to replace `Developer-API-Key` with your API key.
+
+```http
+POST /integration/rest/api/v1/content/ HTTP/1.1
+Host: https:///sodyo-cms.herokuapp.com
+Content-Type: application/json
+X-AUTH-TOKEN: Developer-API-Key
+{
+  "name": "Content 1",
+  "description": "description 1",
+  "content": {
+    "actionType": "DATA",
+    "params": {
+      "data": "blah blah blah"
+    }
+  }
+}
+```
+> Make sure to replace `Developer-API-Key` with your API key.
+
+### Responses
+The Sodyo Web API provides response codes that indicate the status of the API request.
+
+API Request:
+```http
+GET /integration/rest/api/v1/content HTTP/1.1'</code>
+````
+
+API Response:
+```http
+HTTP/1.1 200 OK
+Content-Type: application/json
+[
+  {
+      "uuid": "0d2712a6-6418-432d-bee5-f22e75e08286",
+      "name": "Content 1",
+      "description": "Descrption 1",
+      "content": {
+          "actionType": "DATA",
+          "params": {
+              "data": "hello"
+          }
+      }
+    }
+]
+```
+
+### Errors
+The Sodyo API provides an indication when an error condition occurs. An API call that generated an error condition will include an error code along with a description where applicable.
+See below a list of errors that may be returned by the API:
+
+| Code 	| Reason               	| Description                                                            	|
+|------	|----------------------	|------------------------------------------------------------------------	|
+| 400  	| Bad Request          	| Validation Error                                                       	|
+| 400  	| Bad Request          	| Duplicate Name (Content, Campaign)                                     	|
+| 400  	| Bad Request          	| CONTENT_NOT_FOUND, Content with such ID does not exist in the account  	|
+| 401  	| Unauthorized         	| Trying to access the API without a valid authorization header          	|
+| 404  	| Not Found            	| Trying to access the non existent entities                             	|
+| 404  	| Not Found            	| Trying to access entities which don’t belong to the API key being used 	|
+| 507  	| Insufficient Storage 	| Reached account campaign limit                                         	|
+
+# Content API
 
 ## Get All Content
 This function returns all content items in the project
@@ -239,308 +344,10 @@ Sodyo currently supports English. The language displayed on Sodyo user interface
 If the language set on the device is different than the supported languages, the Sodyo user interface will default to English.
 
 # Sodyo License Agreement
-By opening the package, downloading the product or using any of its components, you are consenting to be bound by the [Sodyo license agreement](http://cms.sodyo.com/assets/docs/SDK_License_Agreement.pdf). 
+By opening the package, downloading the product or using any of its components, you are consenting to be bound by the [Sodyo license agreement](http://cms.sodyo.com/assets/docs/SDK_License_Agreement.pdf).
 
 If you do not agree to all of the terms of this agreement, do not download and install this package or proceed.
 
 # Support
 Should you have any questions or need any help, please do not hesitate to contact us at
 [Support](mailto:portalsupport@sodyo.com).
-
-# Android SDK
-
-## Installation
-Before you begin, please make sure that the minSdkVersion >= 16 and targetSdkVersion <=24 (in your \app\build.gradle file).
-
-```java
-	allprojects {
-		repositories {
-			maven {
-				credentials {
-					//Bitbucket credentials
-					username "sodyoltd@gmail.com"
-					password "sodyo@sdk"
-				}
-				url "https://api.bitbucket.org/1.0/repositories/sodyodevteam/sodyosdk-android/raw/releases"
-			}
-		jcenter()
-		}
-	}
-
-```
-1. In your project build.gradle file add the following:
-
-```java
-android {
-...
-	packagingOptions {
-	exclude "META-INF/DEPENDENCIES.txt"
-	exclude "META-INF/LICENSE.txt"
-	exclude "META-INF/NOTICE.txt"
-	exclude "META-INF/NOTICE"
-	exclude "META-INF/LICENSE"
-	exclude "META-INF/DEPENDENCIES"
-	exclude "META-INF/notice.txt"
-	exclude "META-INF/license.txt"
-	exclude "META-INF/dependencies.txt"
-	exclude "META-INF/LGPL2.1"
-	exclude "META-INF/ASL2.0"
-	exclude "META-INF/maven/com.google.guava/guava/pom.properties"
-	exclude "META-INF/maven/com.google.guava/guava/pom.xml"
-        }
-}
-dependencies {
-...
-	compile "com.sodyo:sodyo-android-sdk:3.00.04"
-}
-```
-<br><br><br><br><br><br><br><br><br><br><br><br>
-
-<ol start="2">
-<li>In your app build.gradle file add the following:</li>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-</ol>
-
-## Initialization
-Prior to launching the Sodyo Scanner, the application should initialize the Sodyo engine. This will instantiate the Sodyo SDK and load your app data that is binded with your Sodyo Markers. The initialization method should be from your Main activity class.
-
-1. Call the initialization method from your main activity onCreate():
-
-```java
-import com.sodyo.sdk.Sodyo;
-@Override
-public void onCreate() {
-// init Sodyo engine App
-Sodyo.init(application, SODYO_APP_KEY, initializationCallback);
-// define a detection callback
-Sodyo.getInstance().setSodyoScannerCallback(this);
-...
-super.onCreate();
-}
-```
-
-<br><br><br><br><br><br><br><br><br><br>
-<aside class="notice">
-Parameters Description:
-
-<ul>- application: application context</ul>
-
-<ul>- SODYO_APP_KEY: the application key assigned to the account</ul>
-
-<ul>- initializationCallback: Used to provide an async callback to identify whether Sodyo SDK initialization failed or finished successfully.</ul>
-</aside>
-
-<aside class="success">
-The <code>SODYO_APP_KEY</code> can be found in the application provider / SDK module of your account in the Sodyo Portal
-</aside>
-
-<ol start="2">
-<li>Make your activity implement the SodyoInitCallback interface to get notified on the result of the initialization process:</li>
-</ol>
-
-```java
-import com.sodyo.sdk.SodyoInitCallback;
-
-public void onSodyoAppLoadSuccess();
-public void onSodyoAppLoadFailed(String error);
-```
-
-<br><br><br><br><br><br><br><br>
-
-## Marker Detection
-The app invokes the Sodyo Scanner to start detecting markers. Sodyo scans for Markers in the camera
-field of view and uses a callback procedure for each detected Marker. The Sodyo Scanner will keep
-running until it is finished.
-
-```java
-import com.sodyo.sdk.SodyoScannerCallback;
-
-Sodyo.getInstance().setSodyoScannerCallback(this);
-```
-
-1. Set a callback object that implements SodyoScannerCallback and receives the scanning results.
-<br><br><br><br>
-Make your activity implement the SodyoScannerCallback interface to get notified on marker scan:
-
-```java
-@Override
-public void onMarkerDetect(String data,String error) {
-...
-}
-```
-<br><br><br><br><br>
-
-<ol start="2">
-<li>Launch SodyoScanner Activity using startActivityForResult(Intent, int). For example:</li>
-</ol>
-
-```java
-import com.sodyo.app.SodyoScanner;
-
-private static final int SODYO_REQUEST_CODE = 1111;
-
-Intent intent = new Intent(MainActivity.this, SodyoScanner.class);
-startActivityForResult(intent, SODYO_REQUEST_CODE);
-```
-<br><br><br><br><br><br><br>
-
-<ol start="3">
-<li>When ready, dismiss the SodyoScanner activity using finishActivity(int requestCode). Use the
-request code that was used in the previous section. For example:</li>
-</ol>
-
-```java
-finishActivity(SODYO_REQUEST_CODE);
-```
-<br><br>
-
-## Intent Filter
-Add additional intent filter for application to handle sodyo actions:
-
-```java
-<intent-filter>
-	<action android:name="android.intent.action.VIEW"/>
-	<category android:name="android.intent.category.DEFAULT"/>
-	<category android:name="android.intent.category.BROWSABLE"/>
-	<data android:scheme="sodyo"/>
-</intent-filter>
-```
-
-<br><br><br><br><br><br>
-
-## Setting Up ProGuard
-Add the following lines to your project’s proguard-rules.pro file:
-
-```java
--dontwarn com.sodyo.**
--keep class com.crittercism.**
--keepclassmembers class com.com.sodyo.** { *; }
-```
-
-<br><br><br><br>
-
-# IOS SDK
-
-## Installation
-1. Sodyo’s SDK is installed using CocoaPods. For more information on installing CocoaPods on
-your system, read the [CocoaPods website](http://cocoapods.org).
-
-2. In your project’s pod file, add:
-
-
-```objective_c
-pod 'SodyoSDK'
-```
-
-<br><br>
-
-<ol start="3">
-<li>Add an entry for NSCameraUsageDescription in your info.plist file.</li>
-</ol>
-
-## Initialization
-Prior to launching the Sodyo Scanner, the application should initialize the Sodyo engine. This will instantiate the Sodyo SDK and load your application’s data that is binded with your Sodyo
-Markers.
-
-The initialization method should be called once in your AppDelegate or anywhere in the code.
-
-1. Include the header file:
-
-```objective_c
-#import <SodyoSDK/SodyoSDK.h>
-```
-<br><br><br>
-
-<ol start="2">
-<li>Call the initialization method:</li>
-</ol>
-
-```objective_c
-[SodyoSDK LoadApp:<SODYO_APP_KEY> Delegate:NSObject<SodyoSDKDelegate> MarkerDelegate:NS
-Object<SodyoMarkerDelegate> PresentingViewController:UIViewController*];
-```
-<br><br><br><br>
-<aside class="notice">
-Parameters Description:
-
-<ul>- SODYO_APP_KEY: the application key assigned to the account</ul>
-
-<ul>- SodyoSDKDelegate: delegate that allows getting notified on the result of the Sodyo SDK initialization process.</ul>
-
-<ul>- MarkerDelegate: An object that conforms to the SodyoMarkerDelegate protocol (see below).</ul>
-
-<ul>- PresentingViewController: For SodyoAd markers, the UIViewController that will be used to present SodyoAd’s UIViewController.</ul>
-
-</aside>
-
-<aside class="success">
-The <code>SODYO_APP_KEY</code> can be found in the application provider / SDK module of your account in the Sodyo Portal
-</aside>
-
-<ol start="3">
-<li>Optionally Implement the SodyoSDKDelegate functions below to get notified on the result of
-the initialization process</li>
-</ol>
-
-```objective_c
-(void) onSodyoAppLoadSuccess:(NSInteger)AppID;
-
-(void) onSodyoAppLoadFailed:(NSInteger)AppID error:(NSError *)error;
-```
-<br><br><br>
-
-## Marker Detection
-The application invokes the Sodyo Scanner to start detecting markers. Sodyo scans for Markers in the camera’s field of view and calls back a delegate function for each detected Marker.
-
-The Sodyo Scanner will keep running until it is dismissed.
-
-1. Launch Sodyo Marker Scanner by presenting it as a UIViewController. For example:
-
-```objective_c
-#import <SodyoSDK/SodyoSDK.h>
-...
-[self presentViewController:[SodyoSDK initSodyoScanner] animated:YES completion:nil];
-```
-<br><br><br><br><br>
-
-<ol start="2">
-<li>For data markers, implement the following delegate method. Sodyo will call this method upon a Sodyo Data Marker detection:</li>
-</ol>
-
-
-```objective_c
-- (void) SodyoMarkerDetectedWithData:(NSDictionary*)Data;
-```
-
-<br><br><br><br>
-
-<aside class="notice">
-Note:
-<ul>- Data: A JSON object: {SodyoMarkerData: <string data>}</ul>
-</aside>
-
-<aside class="success">
-Not relevant when using Sodyo’s Ad platform.
-</aside>
-
-<ol start="3">
-<li>When ready, dismiss the Sodyo Marker Scanner. Use the UIViewController that you presented
-earlier. For example:</li>
-</ol>
-
-```objective_c
-[self dismissViewControllerAnimated:YES completion:nil];
-```
-
-<br><br><br><br><br><br><br>
-
-# Migration
-Migrating from previous versions of the SDK
-
-## Android
-To upgrade from previous versions of the SDK, make sure to pull the latest version of the SDK as
-indicated in the dependencies of the app build.gradle file. In addition, change your `init` function as indicated in the initialization section.
-
-## IOS
-To upgrade from previous versions of the SDK, make sure to perform a `POD update` operation.
-
