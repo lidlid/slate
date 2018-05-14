@@ -35,10 +35,11 @@ your TV station offers.
 The Sodyo API provides the mechanism to interact with the Sodyo solution directly from a customer system.
 
 ## Overview
-The Sodyo Server APIs enable developers to create, read, update and delete (CRUD) content and campaigns with Sodyo's Portal. Previously, these operations were only available via the Portal user interface (UI), however, there are cases that a customer will want to automate the creation of content items and campaigns, via code, to tightly integrate Sodyo with customer internal workflows and systems.
+The Sodyo APIs enable developers to create, read, update and delete (CRUD) content and campaigns with Sodyo's Portal. Previously, these operations were only available via the Portal user interface (UI), however, there are cases that a customer will want to automate the creation of content items and campaigns, via code, to tightly integrate Sodyo with customer internal workflows and systems.
 
-Version 1.0 of the Sodyo APIs enables full campaign management and full content management for content of type “immediate action”. <br>
-Content type of “Sodyo Ad” is not supported in the API at this time.
+Version 1.0 of the Sodyo API enables full campaign management and full content management for content of type “immediate action”. <br>
+
+<aside class="notice">Content type of “Sodyo Ad” is not supported in the API at this time.</aside>
 
 ## API Access
 The Sodyo administrator must enable API support for a project to allow interacting with the Sodyo system. If the API is not enabled in your project, please feel free to contact us and [request API access](mailto:portalsupport@sodyo.com).
@@ -46,7 +47,7 @@ The Sodyo administrator must enable API support for a project to allow interacti
 ## Supported Functionality
 The Sodyo API provides the ability to perform content and campaign related operations.
 
-<aside class="notice">All content & campaign operations are available for content / campaigns of type immediate action only. Referencing content / campaigns of type SODYO_AD via the API will return <code>404-Not Found</code></aside>
+<aside class="notice">All content & campaign operations are available for content / campaigns of type immediate action only. Referencing content / campaigns of type SODYO_AD via the API will return an error <code>404-Not Found</code></aside>
 
 The main functionality provided as part of the Sodyo API v1.0 includes:
 
@@ -83,6 +84,20 @@ Supported APIs include:
 * Enable campaign
 * Disable campaign
 
+## Supported Actions
+Sodyo content supports enabling various actions when a marker is scanned. The table below lists the supported actions and related parameters that can be set for each action.
+
+| Action          	| Description                     	| Params                                       	| Description                                                                                  	| Required                               	| Type                                                                                            	| Example                                                                              	|
+|-----------------	|---------------------------------	|----------------------------------------------	|----------------------------------------------------------------------------------------------	|----------------------------------------	|-------------------------------------------------------------------------------------------------	|--------------------------------------------------------------------------------------	|
+| ADD_TO_CALENDAR 	| Add a calendar event            	| Title Address Date Type Time                 	| Event Name Event Address Event Date Event Type Event Time                                    	| Yes No Yes Yes Yes for timeRange Event 	| String String String (Epoch rep.) Enum: timeRange or allDay String (Epoch rep.) for start / end 	| Meeting with Sodyo 4 Abc St., Tel Aviv, Israel 1526135094765 timeRange 1525384807804 	|
+| URL             	| Navigate to a URL               	| url                                          	| Target URL                                                                                   	| Yes                                    	| String                                                                                          	| http://www.sodyo.com                                                                 	|
+| PHONE           	| Call a phone number             	| phone                                        	| Target phone number                                                                          	| Yes                                    	| String (numeric)                                                                                	| 123456789                                                                            	|
+| NAVIGATE        	| Navigate to an address          	| address                                      	| Target Address                                                                               	| Yes                                    	| String                                                                                          	| 4 Abc St., Tel Aviv, Israel                                                          	|
+| SAVE_CONTACT    	| Add a contact                   	| First Name Last Name Phone Email URL Company 	| Contact First Name Contact Last Name Contact Phone Contact Email Contact URL Contact Company 	| Yes No No No No No                     	| String String String String String String                                                       	| Ron Yagur 123456789 ron@sodyo.com http://www.sodyo.com Sodyo                         	|
+| DATA            	| Provide data to the application 	| data                                         	| Data to transfer to the application                                                          	| Yes                                    	| String / json                                                                                   	| {     "name":"John",     "age":30,     "food":"salad"  }                             	|
+
+<aside class="notice">For a DATA action, it may be useful to provide the data as json. In this case, the json may need to be escaped - for additional information see [here](https://www.json.org/).</aside>
+
 # Getting Started
 
 ## Prerequisites
@@ -99,7 +114,7 @@ An API call to the Sodyo server must include the following components:
 * An API Key within the Authorization Header
 * A Request. When submitting data to a resource via POST or PUT, you must submit your payload in JSON.
 
-## API Response Messages
+## API Response Format
 All responses delivered via the Sodyo API are returned in JSON format with UTF-8 charset. This is specified by including the content-type header in responses indicating application/json;charset=UTF-8.  
 
 ## API Endpoint Structure
@@ -169,47 +184,62 @@ Sodyo system. Trying to access any other endpoint will return <code>403-Forbidde
 
 
 # API Reference
-## Sodyo Web API V1
-The Sodyo API is a RESTful easy to integrate with API providing a full set of functionality for managing content and campaigns.
+The Sodyo API is a RESTful API that provides a simple interface with a full set of functionality for managing content and campaigns.
 
 ## Example
 ```shell
-  curl https://sodyo-cms.herokuapp.com/integration/rest/api/v1/content
+  curl https://cms.sodyo.com/integration/rest/api/v1/content
   -H "Content-Type: application/json"
-  -H "X-AUTH-TOKEN: Developer-API-Key"
+  -H "X-AUTH-TOKEN: DEVLOPER-API-KEY"
 ```
 
-> Make sure to replace `Developer-API-Key` with your API key.
+> Make sure to replace `DEVLOPER-API-KEY` with your API key.
 
-## Using the Sodyo Web API
+```http
+  GET /integration/rest/api/v1/content/ HTTP/1.1
+  Host: https://cms.sodyo.com
+  Content-Type: application/json
+  X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+> Make sure to replace `DEVLOPER-API-KEY` with your API key.
 
-### Authentication
+## Authentication
 Every request made via the Sodyo API must be authenticated by including an <code>X-AUTH-TOKEN</code> header as part of the request. The <code>X-AUTH-TOKEN</code> is the API Key assigned to the developer project in the Sodyo portal. When the Sodyo server receives a request from an application, the key hash value is used to authenticate the application with the hash value stored in the server. This provides a secure mechanism that prevents any unauthorized access to the system.
 
 ```shell
-  curl https://sodyo-cms.herokuapp.com/integration/rest/api/v1/content
+  curl "https://cms.sodyo.com/integration/rest/api/v1/content"
   -H "Content-Type: application/json"
-  -H "X-AUTH-TOKEN: Developer-API-Key"
+  -H "X-AUTH-TOKEN: DEVLOPER-API-KEY"
 ```
-> Make sure to replace `Developer-API-Key` with your API key.
+> Make sure to replace `DEVLOPER-API-KEY` with your API key.
 
-### Requests
+```http
+  GET /integration/rest/api/v1/content/ HTTP/1.1
+  Host: https://cms.sodyo.com
+  Content-Type: application/json
+  X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+> Make sure to replace `DEVLOPER-API-KEY` with your API key.
+
+
+## Requests
 All requests to the Sodyo Web API must be made via HTTPS. It is best practice to include the Content-Type: application/json header in all requests.<br>
+
 The Sodyo Web API is completely RESTful and accepts GET, POST, PUT, and DELETE requests, depending on the resource.
 
 ```shell
-  curl -X POST "https://sodyo-cms.herokuapp.com/integration/rest/api/v1/content/"
+  curl -X POST "https://cms.sodyo.com/integration/rest/api/v1/content/"
   -H "Content-Type: application/json"
-  -H "X-AUTH-TOKEN: Developer-API-Key"
+  -H "X-AUTH-TOKEN: DEVLOPER-API-KEY"
   -d "{\"name\": \"Call content 15\",\"description\": \"desc 15\",\"content\": {\"actionType\": \"DATA\",\"params\": {\"data\": \"blah blah blah\"}}}"
 ```
 > Make sure to replace `Developer-API-Key` with your API key.
 
 ```http
 POST /integration/rest/api/v1/content/ HTTP/1.1
-Host: https:///sodyo-cms.herokuapp.com
+Host: https://cms.sodyo.com
 Content-Type: application/json
-X-AUTH-TOKEN: Developer-API-Key
+X-AUTH-TOKEN: DEVLOPER-API-KEY
 {
   "name": "Content 1",
   "description": "description 1",
@@ -223,18 +253,27 @@ X-AUTH-TOKEN: Developer-API-Key
 ```
 > Make sure to replace `Developer-API-Key` with your API key.
 
-### Responses
+## Responses
 The Sodyo Web API provides response codes that indicate the status of the API request.
 
 API Request:
+```shell
+  curl "https://cms.sodyo.com/integration/rest/api/v1/content"
+```
+
 ```http
 GET /integration/rest/api/v1/content HTTP/1.1'</code>
 ````
-
 API Response:
+```shell
+
+```
+
 ```http
 HTTP/1.1 200 OK
 Content-Type: application/json
+```
+```json
 [
   {
       "uuid": "0d2712a6-6418-432d-bee5-f22e75e08286",
@@ -250,7 +289,7 @@ Content-Type: application/json
 ]
 ```
 
-### Errors
+## Errors
 The Sodyo API provides an indication when an error condition occurs. An API call that generated an error condition will include an error code along with a description where applicable.
 See below a list of errors that may be returned by the API:
 
@@ -258,90 +297,659 @@ See below a list of errors that may be returned by the API:
 |------	|----------------------	|------------------------------------------------------------------------	|
 | 400  	| Bad Request          	| Validation Error                                                       	|
 | 400  	| Bad Request          	| Duplicate Name (Content, Campaign)                                     	|
-| 400  	| Bad Request          	| CONTENT_NOT_FOUND, Content with such ID does not exist in the account  	|
+| 400  	| Bad Request          	| Validation Error, Entity with such ID does not exist in the account  	|
 | 401  	| Unauthorized         	| Trying to access the API without a valid authorization header          	|
 | 404  	| Not Found            	| Trying to access the non existent entities                             	|
 | 404  	| Not Found            	| Trying to access entities which don’t belong to the API key being used 	|
 | 507  	| Insufficient Storage 	| Reached account campaign limit                                         	|
 
 # Content API
+The Sodyo content API allows performing CRUD operations on content.
 
-## Get All Content
-This function returns all content items in the project
+## Get All Content [GET]
+Returns all content items of type immediate action in the project
 
-> The above command returns JSON structured like this:
-
+Request
+```http
+GET /integration/rest/api/v1/content HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+https://cms.sodyo.com/integration/rest/api/v1/content
+```
+Response
 ```json
 [
 	{
-		"uuid": ​ "3d7f83f7-dcd5-4f03-ab97-2e1fb9056978"​ ,
-		"name": ​ "Call content"​ ,
-		"description": ​ "desc"​ ,
+		"uuid": ​ "3d9fa5f7-dcd5-4f03-ab97-2e6e6e656978"​ ,
+		"name": ​ "Content1 - Phone"​ ,
+		"description": ​ "Description1"​ ,
 		"content": {
 			"actionType": ​ "PHONE"​ ,
 			"params": {
-				"phone": ​ "89787978978"
+				"phone": ​ "123456789"
 			}
 		}
 	},
 	{
 		"uuid": ​ "3d7f83f7-dcd5-4f03-ab97-2e1fb9056977"​ ,
-		"name": ​ "Data content"​ ,
-		"description": ​ "desc"​ ,
+		"name": ​ "Content2 - Data"​ ,
+		"description": ​ "Description2"​ ,
 		"content": {
 			"actionType": ​ "DATA"​ ,
 			"params": {
-				"data": ​ "89787978978"
+				"data": ​ "Hello World"
 			}
 		}
 	}
-]```
+]
+```
+## Get Content By Name [GET]
+Returns a content item by name
 
-This endpoint retrieves all content items in the project.
+Request
+```http
+GET /integration/rest/api/v1/content?name={content-name} HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+https://cms.sodyo.com/integration/rest/api/v1/content?name=content-name
+```
+Response
+```json
+[
+	{
+		"uuid": ​ "3d9fa5f7-dcd5-4f03-ab97-2e6e6e656978"​ ,
+		"name": ​ "Content1 - Phone"​ ,
+		"description": ​ "Description1"​ ,
+		"content": {
+			"actionType": ​ "PHONE"​ ,
+			"params": {
+				"phone": ​ "123456789"
+			}
+		}
+	}
+]
+```
 
-### HTTP Request
+## Get Content By UUID [GET]
+Returns a content item by UUID
 
-`GET /integration/rest/api/v1/content`
+Request
+```http
+GET /integration/rest/api/v1/content/{UUID} HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+https://cms.sodyo.com/integration/rest/api/v1/content/3d9fa5f7-dcd5-4f03-ab97-2e6e6e656978
+```
+Response
+```json
+[
+	{
+		"uuid": ​ "3d9fa5f7-dcd5-4f03-ab97-2e6e6e656978"​ ,
+		"name": ​ "Content1 - Phone"​ ,
+		"description": ​ "Description1"​ ,
+		"content": {
+			"actionType": ​ "PHONE"​ ,
+			"params": {
+				"phone": ​ "123456789"
+			}
+		}
+	}
+]
+```
 
-### Query Parameters
-None
+## Create a Content Item [POST]
+Creates a new content Item.
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+Request Attributes
+
+| Attribute   	| Required 	| Type      	| Description                                                            	|
+|-------------	|----------	|-----------	|------------------------------------------------------------------------	|
+| Name        	| Yes      	| String    	| Content Name                                                           	|
+| Description 	| No       	| String    	| Content Description                                                    	|
+| Content 	| Yes      	| Object      	| N/A 	|
+| Action Type 	| Yes      	| Enum      	| Action Type: DATA, URL, PHONE, NAVIGATE, ADD_TO_CALENDAR, SAVE_CONTACT 	|
+| Params      	| Yes      	| Object 	| Action Parameters                                                      	|
+
+<aside class="notice">For details about the required parameters for each action type see the supported actions section.</aside>
+
+Request
+```http
+POST /integration/rest/api/v1/content/ HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+POST /integration/rest/api/v1/content HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+{
+    "name": "test data content",
+    "description": "description 1",
+    "content": {
+      "actionType": "DATA",
+      "params": {
+        "data": "blah blah blah"
+      }
+    }
+  }
+```
+Response
+```json
+[
+  {
+    "uuid": "3d7f83f7-dcd5-4f03-ab97-2e1fb9056977",
+    "name": "Call content updated",
+    "description": "desc",
+    "content": {
+      "actionType": "DATA",
+      "params": {
+        "data": "blah blah"
+      }
+    }
+  }
+]
+```
+
+## Update a Content Item [POST]
+Updates an existing content Item.
+
+Request Attributes
+
+| Attribute   	| Required 	| Type      	| Description                                                            	|
+|-------------	|----------	|-----------	|------------------------------------------------------------------------	|
+| Name        	| Yes      	| String    	| Content Name                                                           	|
+| Description 	| No       	| String    	| Content Description                                                    	|
+| Content 	| Yes      	| Object      	| N/A 	|
+| Action Type 	| Yes      	| Enum      	| Action Type: DATA, URL, PHONE, NAVIGATE, ADD_TO_CALENDAR, SAVE_CONTACT 	|
+| Params      	| Yes      	| Object 	| Action Parameters                                                      	|
+
+<aside class="notice">For details about the required parameters for each action type see the supported actions section.</aside>
+
+Request
+```http
+POST /integration/rest/api/v1/content/{content-UUID} HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+POST /integration/rest/api/v1/content/3d7f83f7-dcd5-4f03-ab97-2e1fb9056977 HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+{
+    "name": "test data content",
+    "description": "description 1",
+    "content": {
+      "actionType": "DATA",
+      "params": {
+        "data": "blah blah blah"
+      }
+    }
+  }
+```
+Response
+```json
+[
+  {
+    "uuid": "3d7f83f7-dcd5-4f03-ab97-2e1fb9056977",
+    "name": "Call content updated",
+    "description": "desc",
+    "content": {
+      "actionType": "DATA",
+      "params": {
+        "data": "blah blah"
+      }
+    }
+  }
+]
+```
+
+## Delete a Content Item [DELETE]
+Deletes an existing content Item.
+
+<aside class="warning">Deleted content cannot be restored. If deleted, a new content item will need to be created.</aside>
+
+Request
+```http
+DELETE /integration/rest/api/v1/content/{content-UUID} HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+DELETE /integration/rest/api/v1/content/3d7f83f7-dcd5-4f03-ab97-2e1fb9056977 HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Response
+```
+HTTP/1.1 200 OK
+```
+
+# Campaigns API
+The Sodyo campaigns API allows performing CRUD operations on campaigns.
+
+## Get All Campaigns [GET]
+Returns all campaigns associated with content of type immediate action in the project
+
+Request
+```http
+GET /integration/rest/api/v1/campaign HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+https://cms.sodyo.com/integration/rest/api/v1/campaign
+```
+Response
+```json
+[
+  {
+    "uuid": "41c700f3-754c-42fe-a64b-141865829dee",
+    "name": "monitoring campaign",
+    "mediaType": "TV",
+    "location": "Mobile",
+    "notes": null,
+    "address": null,
+    "contentUuid": "85971fe1-4236-4ee0-b292-2f648c72d519",
+    "contentName": "monitoring content",
+    "createDate": "2017-06-27T12:09:20.523+0000",
+    "updateDate": "2018-04-11T13:38:21.666+0000",
+    "enabled": true
+  },
+  {
+    "uuid": "bdbfff6a-4eac-4476-9f9c-bb5e9382727d",
+    "name": "some campaign",
+    "mediaType": "Billboard",
+    "location": "Stationary",
+    "notes": "some notes",
+    "address": "some address",
+    "contentUuid": "3d7f83f7-dcd5-4f03-ab97-2e1fb9056977",
+    "contentName": "Call content",
+    "createDate": "2018-04-16T08:07:47.569+0000",
+    "updateDate": "2018-04-16T08:07:47.569+0000",
+    "enabled": true
+  }
+]
+```
+## Get Campaign by Name [GET]
+Returns a campaign by Name
+
+Request
+```http
+GET /integration/rest/api/v1/campaign?name={name} HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+https://cms.sodyo.com/integration/rest/api/v1/campaign?name=Campaign1
+```
+Response
+```json
+[
+  {
+    "uuid": "f1c700f3-754c-42fe-a64b-1418658123ee",
+    "name": "Campaign1",
+    "mediaType": "TV",
+    "location": "Mobile",
+    "notes": null,
+    "address": null,
+    "contentUuid": "85971fe1-4236-4ee0-b292-2f648c72d519",
+    "contentName": "monitoring content",
+    "createDate": "2017-06-27T12:09:20.523+0000",
+    "updateDate": "2018-04-11T13:38:21.666+0000",
+    "enabled": true
+  }
+]
+```
+
+## Get Campaign by UUID [GET]
+Returns a campaign by UUID
+
+Request
+```http
+GET /integration/rest/api/v1/campaign/{UUID} HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+https://cms.sodyo.com/integration/rest/api/v1/campaign/f1c700f3-754c-42fe-a64b-1418658123ee
+```
+Response
+```json
+[
+  {
+    "uuid": "f1c700f3-754c-42fe-a64b-1418658123ee",
+    "name": "Campaign1",
+    "mediaType": "TV",
+    "location": "Mobile",
+    "notes": null,
+    "address": null,
+    "contentUuid": "85971fe1-4236-4ee0-b292-2f648c72d519",
+    "contentName": "monitoring content",
+    "createDate": "2017-06-27T12:09:20.523+0000",
+    "updateDate": "2018-04-11T13:38:21.666+0000",
+    "enabled": true
+  }
+]
+```
+
+## Create a Campaign [POST]
+Creates a new campaign.
+
+Request Attributes
+
+| Attribute   	| Required 	| Type      	| Description                                                            	|
+|-------------	|----------	|-----------	|------------------------------------------------------------------------	|
+| name        	| Yes      	| String    	| Campaign Name                                                           	|
+| mediaType 	| Yes       	| Enum    	| The type of media for the campaign: TV, Billboard, Digital screen, Other                                                     	|
+| location 	| Yes      	| Enum      	| Marker Location: Stationary, Mobile 	|
+| notes 	| No      	| String      	| Campaign Notes 	|
+| address 	| No      	| String      	| Campaign Address if applicable 	|
+| contentUuid      	| Yes      	| string 	| UUID of the content that is associated with the campaign                                                        	|
+| enabled      	| Yes      	| string (bool) 	| true / false                                                         	|
+
+Request
+```http
+POST /integration/rest/api/v1/campaign/ HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+POST /integration/rest/api/v1/campaign HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+{
+    "name": "Campaign1",
+    "mediaType": "TV",
+    "location": "Mobile",
+    "notes": "This is a great campaign",
+    "address": "1245 East Broadway St., New York City, NY",
+    "contentUuid": "8331fe1-4236-4ee0-b292-2f648e3f4a519",
+    "enabled": true
+}
+```
+Response
+```json
+{
+    "uuid": "efc700f3-754c-43fe-a64b-1418656efdee",
+    "name": "Campaign1",
+    "mediaType": "TV",
+    "location": "Mobile",
+    "notes": "This is a great campaign",
+    "address": "1245 East Broadway St., New York City, NY",
+    "contentUuid": "8331fe1-4236-4ee0-b292-2f648e3f4a519",
+    "contentName": "monitoring content",
+    "createDate": "2017-06-27T12:09:20.523+0000",
+    "updateDate": "2018-04-11T13:38:21.666+0000",
+    "enabled": true
+  }
+```
+## Update a Campaign [POST]
+Update an existing campaign.
+
+Request Attributes
+
+| Attribute   	| Required 	| Type      	| Description                                                            	|
+|-------------	|----------	|-----------	|------------------------------------------------------------------------	|
+| name        	| Yes      	| String    	| Campaign Name                                                           	|
+| mediaType 	| Yes       	| Enum    	| The type of media for the campaign: TV, Billboard, Digital screen, Other                                                     	|
+| location 	| Yes      	| Enum      	| Marker Location: Stationary, Mobile 	|
+| notes 	| No      	| String      	| Campaign Notes 	|
+| address 	| No      	| String      	| Campaign Address if applicable 	|
+| contentUuid      	| Yes      	| string 	| UUID of the content that is associated with the campaign                                                        	|
+| enabled      	| Yes      	| string (bool) 	| true / false                                                         	|
+
+Request
+```http
+POST /integration/rest/api/v1/campaign/{uuid} HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+POST /integration/rest/api/v1/campaign/efc700f3-754c-43fe-a64b-1418656efdee HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+{
+    "name": "Campaign 1",
+    "mediaType": "Other",
+    "location": "Mobile",
+    "notes": "This is a great updated campaign",
+    "address": "1245 East Broadway St., New York City, NY",
+    "contentUuid": "8331fe1-4236-4ee0-b292-2f648e3f4a519",
+    "enabled": false
+}
+```
+Response
+```json
+{
+    "uuid": "efc700f3-754c-43fe-a64b-1418656efdee",
+    "name": "Campaign 1",
+    "mediaType": "Other",
+    "location": "Mobile",
+    "notes": "This is a great updated campaign",
+    "address": "1245 East Broadway St., New York City, NY",
+    "contentUuid": "8331fe1-4236-4ee0-b292-2f648e3f4a519",
+    "contentName": "monitoring content",
+    "createDate": "2017-06-27T12:09:20.523+0000",
+    "updateDate": "2018-04-11T13:38:21.666+0000",
+    "enabled": false
+  }
+```
+## Disable a Campaign [POST]
+Disables an existing campaign.
+
+<aside class="notice">Disabling a campaign makes the campaign unavailable to users. Users scanning the associated marker will not receive any content. Note that disabling a campaign makes it unavailable to users but does not delete it. To make the campaign available to users re-enable it.</aside>
+
+Request
+```http
+POST /integration/rest/api/v1/campaign/{campaign-uuid}/enabled/false HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+POST /integration/rest/api/v1/campaign/efc700f3-754c-43fe-a64b-1418656efdee/enabled/false HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Response
+```json
+{
+    "uuid": "efc700f3-754c-43fe-a64b-1418656efdee",
+    "name": "Campaign 1",
+    "mediaType": "Other",
+    "location": "Mobile",
+    "notes": "This is a great updated campaign",
+    "address": "1245 East Broadway St., New York City, NY",
+    "contentUuid": "8331fe1-4236-4ee0-b292-2f648e3f4a5199",
+    "contentName": "monitoring content",
+    "createDate": "2018-05-10T17:45:53.387+0000",
+    "updateDate": "2018-05-14T13:44:58.942+0000",
+    "enabled": false
+}
+```
+
+## Enable a Campaign [POST]
+Enables an existing campaign.
+
+<aside class="notice">Disabling a campaign makes the campaign unavailable to users. Users scanning the associated marker will not receive any content. Note that disabling a campaign makes it unavailable to users but does not delete it. To make the campaign available to users re-enable it.</aside>
+
+Request
+```http
+POST /integration/rest/api/v1/campaign/{campaign-uuid}/enabled/true HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+POST /integration/rest/api/v1/campaign/efc700f3-754c-43fe-a64b-1418656efdee/enabled/true HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Response
+```json
+{
+    "uuid": "efc700f3-754c-43fe-a64b-1418656efdee",
+    "name": "Campaign 1",
+    "mediaType": "Other",
+    "location": "Mobile",
+    "notes": "This is a great updated campaign",
+    "address": "1245 East Broadway St., New York City, NY",
+    "contentUuid": "8331fe1-4236-4ee0-b292-2f648e3f4a5199",
+    "contentName": "monitoring content",
+    "createDate": "2018-05-10T17:45:53.387+0000",
+    "updateDate": "2018-05-14T13:44:58.942+0000",
+    "enabled": true
+}
+```
+
+## Get Campaign Marker [GET]
+Provides a graphics file with the campaign marker.
+
+<aside class="notice">Get Campaign Marker provides an optimized graphics file for use. The file is provided in Portable Network Graphics (PNG) format, with rounded corners and a transparent background</aside>
+
+<aside class="warning">Supported sizes for both X and Y dimensions are limited between 24 and 2400 pixels. It is highly recommended to use the default size 480 x 264 pixels</aside>
+
+Request
+```http
+GET /integration/rest/api/v1/campaign/{campaign-uuid}/marker?width=480&height=264 HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+GET /integration/rest/api/v1/campaign/efc700f3-754c-43fe-a64b-1418656efdee/marker?width=480&height=264 HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Response
+
+Marker Binary Stream
+
+![Binary Image](/images/Marker.PNG)
 
 
+## Delete a Campaign [DELETE]
+Deletes an existing Campaign.
+
+<aside class="warning">A deleted campaign cannot be resumed. If deleted, a new campaign will need to be created.</aside>
+
+Request
+```http
+DELETE /integration/rest/api/v1/content/{campaign-UUID} HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Example Request
+```http
+DELETE /integration/rest/api/v1/campaign/efc700f3-754c-43fe-a64b-1418656efdee HTTP/1.1
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
+```
+Response
+```
+HTTP/1.1 200 OK
+```
+
+# Examples
+The following section provides example requests of all types.
+Parameters for all examples:
+Host: https://cms.sodyo.com
+Content-Type: application/json
+X-AUTH-TOKEN: DEVLOPER-API-KEY
 
 
+## Get All Content [GET]
+GET https://cms.sodyo.com/integration/rest/api/v1/content
 
-# Old
-Sodyo provides example projects for iOS and Android to be used as a reference for developers.
+## Get Content By Name [GET]
+GET https://cms.sodyo.com/integration/rest/api/v1/content?name=Content1
 
-iOS: An example project is available [here](https://github.com/SodyoSDK/SodyoSDKPod).
 
-Android: An example project is available [here](https://bitbucket.org/sodyodevteam/sodyosdkexample-android.git)
+## Get Content By UUID [GET]
+GET https://cms.sodyo.com/integration/rest/api/v1/content/4cf73e6e-b59a-4f9e-883a-49ae63f38895
 
-## System Description and Workflow
-The Sodyo system consists of the SDK integrated in a mobile application, the Sodyo Server and Sodyo’s Portal / content management system.
 
-## Operational Scenario
-* Create content using the Sodyo Portal
-* Create a campaign using the Sodyo Portal. A Sodyo code is assigned to the campaign.
-* Integrate Sodyo’s SDK to make your mobile application “Sodyo enabled”.
-* Run your mobile application and open the Sodyo Scanner to start detecting Sodyo codes.
-* Once a Sodyo code is detected, the Sodyo SDK will deliver the interactive content associated with
-the scanned code to the mobile application.
+## Create a Content Item [POST]
 
-## Supported Platforms
-Sodyo currently runs on iOS 9 and higher as well as on Android 4.1 and higher (minSdkVersion >= 16
-and targetSdkVersion <=24).
 
-We have language bindings in Java for Android Developers and Objective C for iOS developers. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+## Update a Content Item [POST]
 
-## Supported Languages
-Sodyo currently supports English. The language displayed on Sodyo user interface is determined by the language set in the device's settings.
 
-If the language set on the device is different than the supported languages, the Sodyo user interface will default to English.
+## Delete a Content Item [DELETE]
+DELETE https://cms.sodyo.com/integration/rest/api/v1/content/4cf73e6e-b59a-4f9e-883a-49ae63f38895
+
+
+## Get All Campaigns [GET]
+GET https://cms.sodyo.com/integration/rest/api/v1/campaign
+
+
+## Get Campaign by Name [GET]
+GET https://cms.sodyo.com/integration/rest/api/v1/campaign?name=Campaign1
+
+## Get Campaign by UUID [GET]
+GET https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912
+
+
+## Create a Campaign [POST]
+
+
+## Update a Campaign [POST]
+
+
+## Disable a Campaign [POST]
+POST https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912/enabled/false
+
+
+## Enable a Campaign [POST]
+POST https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912/enabled/true
+
+## Get Campaign Marker [GET]
+GET https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912/marker?width=480&height=264
+
+
+## Delete a Campaign [GET]
+DELETE https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912
 
 # Sodyo License Agreement
 By opening the package, downloading the product or using any of its components, you are consenting to be bound by the [Sodyo license agreement](http://cms.sodyo.com/assets/docs/SDK_License_Agreement.pdf).
