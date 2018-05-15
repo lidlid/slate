@@ -1,0 +1,17 @@
+| Action | Parameter | Description | Required | Type | Example |
+|-----------------|-----------|--------------------|---------------------------|---------------------------|-------------------------------------------|
+| ADD_TO_CALENDAR | title | Event Name | Yes | String | Event Title |
+|  | address | Event Address | No | String | 3 Main St. |
+|  | date | Event Date | Yes | Epoch | 1525384807804 |
+|  | eventType | Event Type | Yes | Enum  timeRange or allDay | timeRange |
+|  | time | Event Time | Yes if type  is TimeRange | Epoch start & end | start : 1525384807820 end : 1525384807850 |
+| URL | url | Target URL | Yes | String | https://www.sodyo.com |
+| PHONE | phone | Target Phone # | Yes | String | 0523334989 |
+| NAVIGATE | address | Target address | Yes | String | 3 Main St. |
+| SAVE_CONTACT | firstName | Contact First Name | Yes | String | Ron |
+|  | lastName | Contact Last Name | No | String | Yagur |
+|  | phone | Contact phone | No | String | 0523334989 |
+|  | email | Contact email | Yes | String | ron@sodyo.com |
+|  | url | Contact URL | Yes | String | https://www.sodyo.com |
+|  | company | Contact Company | No | String | Sodyo |
+| DATA | data | data |  | String (JSON / XML) |  |
