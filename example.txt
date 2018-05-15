@@ -1,0 +1,36 @@
+           "actionType": "DATA",
+            "params": {
+                "data": "hello"
+			}
+            "actionType": "PHONE",
+            "params": {
+                "phone": "0523334989"
+			}
+           "actionType": "URL",
+            "params": {
+                "url": "https://www.sodyo.com"
+            }
+            "actionType": "NAVIGATE",
+            "params": {
+                "address": "3 Weinshall st. Tel Aviv Israel"
+            }
+            "actionType": "SAVE_CONTACT",
+            "params": {
+                "firstName": "Ron",
+                "lastName": "Yagur",
+                "phone": "123456789",
+                "email": "ron@sodyo.com",
+                "url": "https://www.sodyo.com",
+                "company": "Sodyo Ltd."
+            }
+            "actionType": "ADD_TO_CALENDAR",
+            "params": {
+                "title": "Event Titel",
+                "address": "1234 erewr",
+                "date": 1525422727804,
+                "eventType": "timeRange", or "allDay"
+                "time": {
+                    "start": 1525384807804,
+                    "end": 1525388407804
+                }
+			}
