@@ -169,12 +169,20 @@ html, body {
     font-weight: 500;
   }
 
+.toc-list-h3 {
+  display: none;
+  background-color: $nav-subitem-bg;
+}
   .toc-h2 {
     padding-left: $nav-padding + $nav-indent;
     font-size: 12px;
   }
+.toc-h3 {
+  padding-left: $nav-padding + $nav-padding + $nav-indent;
+  font-size: 12px;
+}
 
-  .toc-footer {
+ .toc-footer {
     padding: 1em 0;
     margin-top: 1em;
     border-top: 1px dashed $nav-footer-border-color;
@@ -340,9 +348,12 @@ html, body {
   }
 
   // the div is the tocify hidden div for placeholding stuff
-  &>h1, &>h2, &>div {
-    clear:both;
-  }
+& > h1,
+& > h2,
+& > h3,
+& > div {
+  clear: both;
+}
 
   h1 {
     @extend %header-font;
