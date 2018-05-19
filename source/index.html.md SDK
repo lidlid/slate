@@ -6,8 +6,8 @@ language_tabs: # must be one of https://git.io/vQNgJ
   - java
   
 toc_footers:
-  - <a href='mailto:portalsupport@sodyo.com'>Support</a>
-  - <a href='https://www.sodyo.com'>Documentation Powered by Sodyo</a>
+  - <a href='https://www.sodyo.com'>Sodyo Website</a>
+  - <a href='https://github.com/lord/slate'>Documentation powered by Slate</a>
 
 includes:
 
@@ -74,15 +74,6 @@ We have language bindings in Java for Android Developers and Objective C for iOS
 Sodyo currently supports English. The language displayed on Sodyo user interface is determined by the language set in the device's settings.
 
 If the language set on the device is different than the supported languages, the Sodyo user interface will default to English.
-
-# Sodyo License Agreement
-By opening the package, downloading the product or using any of its components, you are consenting to be bound by the [Sodyo license agreement](http://cms.sodyo.com/assets/docs/SDK_License_Agreement.pdf). 
-
-If you do not agree to all of the terms of this agreement, do not download and install this package or proceed.
-
-# Support
-Should you have any questions or need any help, please do not hesitate to contact us at
-[Support](mailto:portalsupport@sodyo.com).
 
 # Android SDK
 
@@ -380,4 +371,13 @@ indicated in the dependencies of the app build.gradle file. In addition, change 
 
 ## IOS
 To upgrade from previous versions of the SDK, make sure to perform a `POD update` operation.
+
+# Sodyo License Agreement
+By opening the package, downloading the product or using any of its components, you are consenting to be bound by the [Sodyo license agreement](http://cms.sodyo.com/assets/docs/SDK_License_Agreement.pdf). 
+
+If you do not agree to all of the terms of this agreement, do not download and install this package or proceed.
+
+# Support
+Should you have any questions or need any help, please do not hesitate to contact us at
+[Support](mailto:portalsupport@sodyo.com).
 
