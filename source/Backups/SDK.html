@@ -1,0 +1,712 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Sodyo SDK Reference</title>
+
+  <style>
+    .highlight table td {
+      padding: 5px;
+    }
+
+    .highlight table pre {
+      margin: 0;
+    }
+
+    .highlight .gh {
+      color: #999999;
+    }
+
+    .highlight .sr {
+      color: #f6aa11;
+    }
+
+    .highlight .go {
+      color: #888888;
+    }
+
+    .highlight .gp {
+      color: #555555;
+    }
+
+    .highlight .gs {}
+
+    .highlight .gu {
+      color: #aaaaaa;
+    }
+
+    .highlight .nb {
+      color: #f6aa11;
+    }
+
+    .highlight .cm {
+      color: #75715e;
+    }
+
+    .highlight .cp {
+      color: #75715e;
+    }
+
+    .highlight .c1 {
+      color: #75715e;
+    }
+
+    .highlight .cs {
+      color: #75715e;
+    }
+
+    .highlight .c,
+    .highlight .cd {
+      color: #75715e;
+    }
+
+    .highlight .err {
+      color: #960050;
+    }
+
+    .highlight .gr {
+      color: #960050;
+    }
+
+    .highlight .gt {
+      color: #960050;
+    }
+
+    .highlight .gd {
+      color: #49483e;
+    }
+
+    .highlight .gi {
+      color: #49483e;
+    }
+
+    .highlight .ge {
+      color: #49483e;
+    }
+
+    .highlight .kc {
+      color: #66d9ef;
+    }
+
+    .highlight .kd {
+      color: #66d9ef;
+    }
+
+    .highlight .kr {
+      color: #66d9ef;
+    }
+
+    .highlight .no {
+      color: #66d9ef;
+    }
+
+    .highlight .kt {
+      color: #66d9ef;
+    }
+
+    .highlight .mf {
+      color: #ae81ff;
+    }
+
+    .highlight .mh {
+      color: #ae81ff;
+    }
+
+    .highlight .il {
+      color: #ae81ff;
+    }
+
+    .highlight .mi {
+      color: #ae81ff;
+    }
+
+    .highlight .mo {
+      color: #ae81ff;
+    }
+
+    .highlight .m,
+    .highlight .mb,
+    .highlight .mx {
+      color: #ae81ff;
+    }
+
+    .highlight .sc {
+      color: #ae81ff;
+    }
+
+    .highlight .se {
+      color: #ae81ff;
+    }
+
+    .highlight .ss {
+      color: #ae81ff;
+    }
+
+    .highlight .sd {
+      color: #e6db74;
+    }
+
+    .highlight .s2 {
+      color: #e6db74;
+    }
+
+    .highlight .sb {
+      color: #e6db74;
+    }
+
+    .highlight .sh {
+      color: #e6db74;
+    }
+
+    .highlight .si {
+      color: #e6db74;
+    }
+
+    .highlight .sx {
+      color: #e6db74;
+    }
+
+    .highlight .s1 {
+      color: #e6db74;
+    }
+
+    .highlight .s {
+      color: #e6db74;
+    }
+
+    .highlight .na {
+      color: #a6e22e;
+    }
+
+    .highlight .nc {
+      color: #a6e22e;
+    }
+
+    .highlight .nd {
+      color: #a6e22e;
+    }
+
+    .highlight .ne {
+      color: #a6e22e;
+    }
+
+    .highlight .nf {
+      color: #a6e22e;
+    }
+
+    .highlight .vc {
+      color: #ffffff;
+    }
+
+    .highlight .nn {
+      color: #ffffff;
+    }
+
+    .highlight .nl {
+      color: #ffffff;
+    }
+
+    .highlight .ni {
+      color: #ffffff;
+    }
+
+    .highlight .bp {
+      color: #ffffff;
+    }
+
+    .highlight .vg {
+      color: #ffffff;
+    }
+
+    .highlight .vi {
+      color: #ffffff;
+    }
+
+    .highlight .nv {
+      color: #ffffff;
+    }
+
+    .highlight .w {
+      color: #ffffff;
+    }
+
+    .highlight {
+      color: #ffffff;
+    }
+
+    .highlight .n,
+    .highlight .py,
+    .highlight .nx {
+      color: #ffffff;
+    }
+
+    .highlight .ow {
+      color: #f92672;
+    }
+
+    .highlight .nt {
+      color: #f92672;
+    }
+
+    .highlight .k,
+    .highlight .kv {
+      color: #f92672;
+    }
+
+    .highlight .kn {
+      color: #f92672;
+    }
+
+    .highlight .kp {
+      color: #f92672;
+    }
+
+    .highlight .o {
+      color: #f92672;
+    }
+  </style>
+  <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+  <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+  <script src="javascripts/all.js"></script>
+</head>
+
+<body class="index" data-languages="[&quot;objective_c&quot;,&quot;java&quot;]">
+  <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+  <div class="toc-wrapper">
+    <img src="images/logo.png" class="logo" alt="Logo" />
+    <div class="lang-selector">
+      <a href="#" data-language-name="objective_c">objective_c</a>
+      <a href="#" data-language-name="java">java</a>
+    </div>
+    <div class="search">
+      <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+    <div id="toc" class="toc-list-h1">
+      <li>
+        <a href="#sodyo-introduction" class="toc-h1 toc-link" data-title="sodyo-introduction">Sodyo Introduction</a>
+      </li>
+      <li>
+        <a href="#about-the-sodyo-sdk" class="toc-h1 toc-link" data-title="about-the-sodyo-sdk">About the Sodyo SDK</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#purpose" class="toc-h2 toc-link" data-title="purpose">Purpose</a>
+          </li>
+          <li>
+            <a href="#components" class="toc-h2 toc-link" data-title="components">Components</a>
+          </li>
+          <li>
+            <a href="#example-projects" class="toc-h2 toc-link" data-title="example-projects">Example Projects</a>
+          </li>
+          <li>
+            <a href="#system-description-and-workflow" class="toc-h2 toc-link" data-title="system-description-and-workflow">System Description and Workflow</a>
+          </li>
+          <li>
+            <a href="#operational-scenario" class="toc-h2 toc-link" data-title="operational-scenario">Operational Scenario</a>
+          </li>
+          <li>
+            <a href="#supported-platforms" class="toc-h2 toc-link" data-title="supported-platforms">Supported Platforms</a>
+          </li>
+          <li>
+            <a href="#supported-languages" class="toc-h2 toc-link" data-title="supported-languages">Supported Languages</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#android-sdk" class="toc-h1 toc-link" data-title="android-sdk">Android SDK</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#installation" class="toc-h2 toc-link" data-title="installation">Installation</a>
+          </li>
+          <li>
+            <a href="#initialization" class="toc-h2 toc-link" data-title="initialization">Initialization</a>
+          </li>
+          <li>
+            <a href="#marker-detection" class="toc-h2 toc-link" data-title="marker-detection">Marker Detection</a>
+          </li>
+          <li>
+            <a href="#intent-filter" class="toc-h2 toc-link" data-title="intent-filter">Intent Filter</a>
+          </li>
+          <li>
+            <a href="#setting-up-proguard" class="toc-h2 toc-link" data-title="setting-up-proguard">Setting Up ProGuard</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#ios-sdk" class="toc-h1 toc-link" data-title="ios-sdk">IOS SDK</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#installation-2" class="toc-h2 toc-link" data-title="installation">Installation</a>
+          </li>
+          <li>
+            <a href="#initialization-2" class="toc-h2 toc-link" data-title="initialization">Initialization</a>
+          </li>
+          <li>
+            <a href="#marker-detection-2" class="toc-h2 toc-link" data-title="marker-detection">Marker Detection</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#migration" class="toc-h1 toc-link" data-title="migration">Migration</a>
+        <ul class="toc-list-h2">
+          <li>
+            <a href="#android" class="toc-h2 toc-link" data-title="android">Android</a>
+          </li>
+          <li>
+            <a href="#ios" class="toc-h2 toc-link" data-title="ios">IOS</a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="#sodyo-license-agreement" class="toc-h1 toc-link" data-title="sodyo-license-agreement">Sodyo License Agreement</a>
+      </li>
+      <li>
+        <a href="#support" class="toc-h1 toc-link" data-title="support">Support</a>
+      </li>
+    </div>
+    <ul class="toc-footer">
+      <li><a href='https://www.sodyo.com'>Sodyo Website</a></li>
+      <li><a href='https://github.com/lord/slate'>Documentation powered by Slate</a></li>
+    </ul>
+  </div>
+  <div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+      <h1 id='sodyo-introduction'>Sodyo Introduction</h1>
+      <p>Sodyo’s technology creates an interactive experience with items in the physical world. Just point your mobile phone camera at any item, place or media display assigned with a Sodyo code and reveal layers of information, content and links.</p>
+
+      <p>Sodyo enhances the TV commercial experience by strengthening the sales funnel. Viewers can interact immediately with the television via with their smartphone and:</p>
+
+      <ul>
+        <li>
+          <p>Point and Purchase – The viewer points their phone or mobile device to the TV screen; a web page instantly appears on their phone which allows them to purchase a product, review their order and complete the purchase if they so choose.</p>
+        </li>
+        <li>
+          <p>Point and Learn More – The viewer points their phone or mobile device to the TV screen, and instantly receives additional information about a product or service.</p>
+        </li>
+        <li>
+          <p>Point and Vote – The viewer points their phone or mobile device to the TV screen and votes for content choices offered on the TV – favorite singer, favorite news story or whatever poll or vote your TV station offers.</p>
+        </li>
+      </ul>
+      <h1 id='about-the-sodyo-sdk'>About the Sodyo SDK</h1>
+      <h2 id='purpose'>Purpose</h2>
+      <p>With Sodyo’s SDK, your mobile phone application can now &quot;see&quot; from a distance and recognize any 2D/3D item in the physical world. Apply a Sodyo code to any indoor/outdoor item, place or media display and your mobile device will detect
+        and interact with it from up to dozens of meters.</p>
+
+      <p>The Sodyo SDK allows application developers to connect their application&#39;s data to Sodyo codes.</p>
+      <h2 id='components'>Components</h2>
+      <p>Sodyo’s SDK is a software library that can be easily integrated into any mobile application to provide the ability to scan and receive interactive content. As part of the SDK Sodyo provides:</p>
+
+      <ul>
+        <li>
+          <p>A software library for iOS / Android</p>
+        </li>
+        <li>
+          <p>An example application that shows the developer how to use the SDK</p>
+        </li>
+      </ul>
+      <h2 id='example-projects'>Example Projects</h2>
+      <p>Sodyo provides example projects for iOS and Android to be used as a reference for developers.</p>
+
+      <p>iOS: An example project is available <a href="https://github.com/SodyoSDK/SodyoSDKPod">here</a>.</p>
+
+      <p>Android: An example project is available <a href="https://bitbucket.org/sodyodevteam/sodyosdkexample-android.git">here</a></p>
+      <h2 id='system-description-and-workflow'>System Description and Workflow</h2>
+      <p>The Sodyo system consists of the SDK integrated in a mobile application, the Sodyo Server and Sodyo’s Portal / content management system.</p>
+      <h2 id='operational-scenario'>Operational Scenario</h2>
+      <ul>
+        <li>Create content using the Sodyo Portal</li>
+        <li>Create a campaign using the Sodyo Portal. A Sodyo code is assigned to the campaign.</li>
+        <li>Integrate Sodyo’s SDK to make your mobile application “Sodyo enabled”.</li>
+        <li>Run your mobile application and open the Sodyo Scanner to start detecting Sodyo codes.</li>
+        <li>Once a Sodyo code is detected, the Sodyo SDK will deliver the interactive content associated with the scanned code to the mobile application.</li>
+      </ul>
+      <h2 id='supported-platforms'>Supported Platforms</h2>
+      <p>Sodyo currently runs on iOS 9 and higher as well as on Android 4.1 and higher (minSdkVersion &gt;= 16 and targetSdkVersion &lt;=24).</p>
+
+      <p>We have language bindings in Java for Android Developers and Objective C for iOS developers. You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+      <h2 id='supported-languages'>Supported Languages</h2>
+      <p>Sodyo currently supports English. The language displayed on Sodyo user interface is determined by the language set in the device&#39;s settings.</p>
+
+      <p>If the language set on the device is different than the supported languages, the Sodyo user interface will default to English.</p>
+      <h1 id='android-sdk'>Android SDK</h1>
+      <h2 id='installation'>Installation</h2>
+      <p>Before you begin, please make sure that the minSdkVersion &gt;= 16 and targetSdkVersion &lt;=24 (in your \app\build.gradle file).</p>
+      <pre class="highlight java tab-java"><code>    <span class="n">allprojects</span> <span class="o">{</span>
+        <span class="n">repositories</span> <span class="o">{</span>
+            <span class="n">maven</span> <span class="o">{</span>
+                <span class="n">credentials</span> <span class="o">{</span>
+                    <span class="c1">//Bitbucket credentials</span>
+                    <span class="n">username</span> <span class="s">"sodyoltd@gmail.com"</span>
+                    <span class="n">password</span> <span class="s">"sodyo@sdk"</span>
+                <span class="o">}</span>
+                <span class="n">url</span> <span class="s">"https://api.bitbucket.org/1.0/repositories/sodyodevteam/sodyosdk-android/raw/releases"</span>
+            <span class="o">}</span>
+        <span class="n">jcenter</span><span class="o">()</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+</code></pre>
+      <ol>
+        <li>In your project build.gradle file add the following:</li>
+      </ol>
+      <pre class="highlight java tab-java"><code><span class="n">android</span> <span class="o">{</span>
+<span class="o">...</span>
+    <span class="n">packagingOptions</span> <span class="o">{</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/DEPENDENCIES.txt"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/LICENSE.txt"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/NOTICE.txt"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/NOTICE"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/LICENSE"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/DEPENDENCIES"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/notice.txt"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/license.txt"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/dependencies.txt"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/LGPL2.1"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/ASL2.0"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/maven/com.google.guava/guava/pom.properties"</span>
+    <span class="n">exclude</span> <span class="s">"META-INF/maven/com.google.guava/guava/pom.xml"</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+<span class="n">dependencies</span> <span class="o">{</span>
+<span class="o">...</span>
+    <span class="n">compile</span> <span class="s">"com.sodyo:sodyo-android-sdk:3.00.04"</span>
+<span class="o">}</span>
+</code></pre>
+      <p><br><br><br><br><br><br><br><br><br><br><br><br></p>
+
+      <ol start="2">
+        <li>In your app build.gradle file add the following:</li>
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      </ol>
+      <h2 id='initialization'>Initialization</h2>
+      <p>Prior to launching the Sodyo Scanner, the application should initialize the Sodyo engine. This will instantiate the Sodyo SDK and load your app data that is binded with your Sodyo Markers. The initialization method should be from your Main activity
+        class.</p>
+
+      <ol>
+        <li>Call the initialization method from your main activity onCreate():</li>
+      </ol>
+      <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">com.sodyo.sdk.Sodyo</span><span class="o">;</span>
+<span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onCreate</span><span class="o">()</span> <span class="o">{</span>
+<span class="c1">// init Sodyo engine App</span>
+<span class="n">Sodyo</span><span class="o">.</span><span class="na">init</span><span class="o">(</span><span class="n">application</span><span class="o">,</span> <span class="n">SODYO_APP_KEY</span><span class="o">,</span> <span class="n">initializationCallback</span><span class="o">);</span>
+<span class="c1">// define a detection callback</span>
+<span class="n">Sodyo</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">setSodyoScannerCallback</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+<span class="o">...</span>
+<span class="kd">super</span><span class="o">.</span><span class="na">onCreate</span><span class="o">();</span>
+<span class="o">}</span>
+</code></pre>
+      <p><br><br><br><br><br><br><br><br><br><br>
+        <aside class="notice">
+          Parameters Description:</p>
+
+      <ul>- application: application context</ul>
+
+      <ul>- SODYO_APP_KEY: the application key assigned to the account</ul>
+
+      <ul>- initializationCallback: Used to provide an async callback to identify whether Sodyo SDK initialization failed or finished successfully.</ul>
+
+      <p>
+        </aside>
+      </p>
+
+      <aside class="success">
+        The <code>SODYO_APP_KEY</code> can be found in the application provider / SDK module of your account in the Sodyo Portal
+      </aside>
+
+      <ol start="2">
+        <li>Make your activity implement the SodyoInitCallback interface to get notified on the result of the initialization process:</li>
+      </ol>
+      <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">com.sodyo.sdk.SodyoInitCallback</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSodyoAppLoadSuccess</span><span class="o">();</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onSodyoAppLoadFailed</span><span class="o">(</span><span class="n">String</span> <span class="n">error</span><span class="o">);</span>
+</code></pre>
+      <p><br><br><br><br><br><br><br><br></p>
+      <h2 id='marker-detection'>Marker Detection</h2>
+      <p>The app invokes the Sodyo Scanner to start detecting markers. Sodyo scans for Markers in the camera field of view and uses a callback procedure for each detected Marker. The Sodyo Scanner will keep running until it is finished.</p>
+      <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">com.sodyo.sdk.SodyoScannerCallback</span><span class="o">;</span>
+
+<span class="n">Sodyo</span><span class="o">.</span><span class="na">getInstance</span><span class="o">().</span><span class="na">setSodyoScannerCallback</span><span class="o">(</span><span class="k">this</span><span class="o">);</span>
+</code></pre>
+      <ol>
+        <li>Set a callback object that implements SodyoScannerCallback and receives the scanning results.
+          <br><br><br><br> Make your activity implement the SodyoScannerCallback interface to get notified on marker scan:</li>
+      </ol>
+      <pre class="highlight java tab-java"><code><span class="nd">@Override</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">onMarkerDetect</span><span class="o">(</span><span class="n">String</span> <span class="n">data</span><span class="o">,</span><span class="n">String</span> <span class="n">error</span><span class="o">)</span> <span class="o">{</span>
+<span class="o">...</span>
+<span class="o">}</span>
+</code></pre>
+      <p><br><br><br><br><br></p>
+
+      <ol start="2">
+        <li>Launch SodyoScanner Activity using startActivityForResult(Intent, int). For example:</li>
+      </ol>
+      <pre class="highlight java tab-java"><code><span class="kn">import</span> <span class="nn">com.sodyo.app.SodyoScanner</span><span class="o">;</span>
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">SODYO_REQUEST_CODE</span> <span class="o">=</span> <span class="mi">1111</span><span class="o">;</span>
+
+<span class="n">Intent</span> <span class="n">intent</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Intent</span><span class="o">(</span><span class="n">MainActivity</span><span class="o">.</span><span class="na">this</span><span class="o">,</span> <span class="n">SodyoScanner</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="n">startActivityForResult</span><span class="o">(</span><span class="n">intent</span><span class="o">,</span> <span class="n">SODYO_REQUEST_CODE</span><span class="o">);</span>
+</code></pre>
+      <p><br><br><br><br><br><br><br></p>
+
+      <ol start="3">
+        <li>When ready, dismiss the SodyoScanner activity using finishActivity(int requestCode). Use the request code that was used in the previous section. For example:</li>
+      </ol>
+      <pre class="highlight java tab-java"><code><span class="n">finishActivity</span><span class="o">(</span><span class="n">SODYO_REQUEST_CODE</span><span class="o">);</span>
+</code></pre>
+      <p><br><br></p>
+      <h2 id='intent-filter'>Intent Filter</h2>
+      <p>Add additional intent filter for application to handle sodyo actions:</p>
+      <pre class="highlight java tab-java"><code><span class="o">&lt;</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">action</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.intent.action.VIEW"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">category</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.intent.category.DEFAULT"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">category</span> <span class="nl">android:</span><span class="n">name</span><span class="o">=</span><span class="s">"android.intent.category.BROWSABLE"</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="n">data</span> <span class="nl">android:</span><span class="n">scheme</span><span class="o">=</span><span class="s">"sodyo"</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">intent</span><span class="o">-</span><span class="n">filter</span><span class="o">&gt;</span>
+</code></pre>
+      <p><br><br><br><br><br><br></p>
+      <h2 id='setting-up-proguard'>Setting Up ProGuard</h2>
+      <p>Add the following lines to your project’s proguard-rules.pro file:</p>
+      <pre class="highlight java tab-java"><code><span class="o">-</span><span class="n">dontwarn</span> <span class="n">com</span><span class="o">.</span><span class="na">sodyo</span><span class="o">.**</span>
+<span class="o">-</span><span class="n">keep</span> <span class="kd">class</span> <span class="nc">com</span><span class="o">.</span><span class="na">crittercism</span><span class="o">.**</span>
+<span class="o">-</span><span class="n">keepclassmembers</span> <span class="kd">class</span> <span class="nc">com</span><span class="o">.</span><span class="na">com</span><span class="o">.</span><span class="na">sodyo</span><span class="o">.**</span> <span class="o">{</span> <span class="o">*;</span> <span class="o">}</span>
+</code></pre>
+      <p><br><br><br><br></p>
+      <h1 id='ios-sdk'>IOS SDK</h1>
+      <h2 id='installation-2'>Installation</h2>
+      <ol>
+        <li>
+          <p>Sodyo’s SDK is installed using CocoaPods. For more information on installing CocoaPods on your system, read the <a href="http://cocoapods.org">CocoaPods website</a>.</p>
+        </li>
+        <li>
+          <p>In your project’s pod file, add:</p>
+        </li>
+      </ol>
+      <pre class="highlight objective_c tab-objective_c"><code><span class="n">pod</span> <span class="err">'</span><span class="n">SodyoSDK</span><span class="err">'</span>
+</code></pre>
+      <p><br><br></p>
+
+      <ol start="3">
+        <li>Add an entry for NSCameraUsageDescription in your info.plist file.</li>
+      </ol>
+      <h2 id='initialization-2'>Initialization</h2>
+      <p>Prior to launching the Sodyo Scanner, the application should initialize the Sodyo engine. This will instantiate the Sodyo SDK and load your application’s data that is binded with your Sodyo Markers.
+      </p>
+
+      <p>The initialization method should be called once in your AppDelegate or anywhere in the code.</p>
+
+      <ol>
+        <li>Include the header file:</li>
+      </ol>
+      <pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;SodyoSDK/SodyoSDK.h&gt;
+</span></code></pre>
+      <p><br><br><br></p>
+
+      <ol start="2">
+        <li>Call the initialization method:</li>
+      </ol>
+      <pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">SodyoSDK</span> <span class="nf">LoadApp</span><span class="p">:</span><span class="o">&lt;</span><span class="n">SODYO_APP_KEY</span><span class="o">&gt;</span> <span class="nf">Delegate</span><span class="p">:</span><span class="n">NSObject</span><span class="o">&lt;</span><span class="n">SodyoSDKDelegate</span><span class="o">&gt;</span> <span class="n">MarkerDelegate</span><span class="o">:</span><span class="n">NS</span>
+<span class="n">Object</span><span class="o">&lt;</span><span class="n">SodyoMarkerDelegate</span><span class="o">&gt;</span> <span class="n">PresentingViewController</span><span class="o">:</span><span class="n">UIViewController</span><span class="o">*</span><span class="p">];</span>
+</code></pre>
+      <p><br><br><br><br>
+        <aside class="notice">
+          Parameters Description:</p>
+
+      <ul>- SODYO_APP_KEY: the application key assigned to the account</ul>
+
+      <ul>- SodyoSDKDelegate: delegate that allows getting notified on the result of the Sodyo SDK initialization process.</ul>
+
+      <ul>- MarkerDelegate: An object that conforms to the SodyoMarkerDelegate protocol (see below).</ul>
+
+      <ul>- PresentingViewController: For SodyoAd markers, the UIViewController that will be used to present SodyoAd’s UIViewController.</ul>
+
+      <p>
+        </aside>
+      </p>
+
+      <aside class="success">
+        The <code>SODYO_APP_KEY</code> can be found in the application provider / SDK module of your account in the Sodyo Portal
+      </aside>
+
+      <ol start="3">
+        <li>Optionally Implement the SodyoSDKDelegate functions below to get notified on the result of the initialization process</li>
+      </ol>
+      <pre class="highlight objective_c tab-objective_c"><code><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">onSodyoAppLoadSuccess</span><span class="o">:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">AppID</span><span class="p">;</span>
+
+<span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="n">onSodyoAppLoadFailed</span><span class="o">:</span><span class="p">(</span><span class="n">NSInteger</span><span class="p">)</span><span class="n">AppID</span> <span class="n">error</span><span class="o">:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">)</span><span class="n">error</span><span class="p">;</span>
+</code></pre>
+      <p><br><br><br></p>
+      <h2 id='marker-detection-2'>Marker Detection</h2>
+      <p>The application invokes the Sodyo Scanner to start detecting markers. Sodyo scans for Markers in the camera’s field of view and calls back a delegate function for each detected Marker.</p>
+
+      <p>The Sodyo Scanner will keep running until it is dismissed.</p>
+
+      <ol>
+        <li>Launch Sodyo Marker Scanner by presenting it as a UIViewController. For example:</li>
+      </ol>
+      <pre class="highlight objective_c tab-objective_c"><code><span class="cp">#import &lt;SodyoSDK/SodyoSDK.h&gt;
+</span><span class="p">...</span>
+<span class="p">[</span><span class="n">self</span> <span class="nf">presentViewController</span><span class="p">:[</span><span class="n">SodyoSDK</span> <span class="nf">initSodyoScanner</span><span class="p">]</span> <span class="nf">animated</span><span class="p">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+</code></pre>
+      <p><br><br><br><br><br></p>
+
+      <ol start="2">
+        <li>For data markers, implement the following delegate method. Sodyo will call this method upon a Sodyo Data Marker detection:</li>
+      </ol>
+      <pre class="highlight objective_c tab-objective_c"><code><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">SodyoMarkerDetectedWithData</span><span class="p">:(</span><span class="n">NSDictionary</span><span class="o">*</span><span class="p">)</span><span class="nv">Data</span><span class="p">;</span>
+</code></pre>
+      <p><br><br><br><br></p>
+
+      <aside class="notice">
+        Note:
+        <ul>- Data: A JSON object: {SodyoMarkerData:
+          <string data>}</ul>
+      </aside>
+
+      <aside class="success">
+        Not relevant when using Sodyo’s Ad platform.
+      </aside>
+
+      <ol start="3">
+        <li>When ready, dismiss the Sodyo Marker Scanner. Use the UIViewController that you presented earlier. For example:</li>
+      </ol>
+      <pre class="highlight objective_c tab-objective_c"><code><span class="p">[</span><span class="n">self</span> <span class="nf">dismissViewControllerAnimated</span><span class="p">:</span><span class="nb">YES</span> <span class="nf">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+</code></pre>
+      <p><br><br><br><br><br><br><br></p>
+      <h1 id='migration'>Migration</h1>
+      <p>Migrating from previous versions of the SDK</p>
+      <h2 id='android'>Android</h2>
+      <p>To upgrade from previous versions of the SDK, make sure to pull the latest version of the SDK as indicated in the dependencies of the app build.gradle file. In addition, change your <code>init</code> function as indicated in the initialization section.</p>
+      <h2 id='ios'>IOS</h2>
+      <p>To upgrade from previous versions of the SDK, make sure to perform a <code>POD update</code> operation.</p>
+      <h1 id='sodyo-license-agreement'>Sodyo License Agreement</h1>
+      <p>By opening the package, downloading the product or using any of its components, you are consenting to be bound by the <a href="http://cms.sodyo.com/assets/docs/SDK_License_Agreement.pdf">Sodyo license agreement</a>. </p>
+
+      <p>If you do not agree to all of the terms of this agreement, do not download and install this package or proceed.</p>
+      <h1 id='support'>Support</h1>
+      <p>Should you have any questions or need any help, please do not hesitate to contact us at
+        <a href="mailto:portalsupport@sodyo.com">Support</a>.</p>
+
+    </div>
+    <div class="dark-box">
+      <div class="lang-selector">
+        <a href="#" data-language-name="objective_c">objective_c</a>
+        <a href="#" data-language-name="java">java</a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
