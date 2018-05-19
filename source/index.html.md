@@ -167,6 +167,14 @@ Where:
 
 ## Requests - Building an API Call
 
+An API call to the Sodyo server must include the following components:
+
+* The Host. The host for all Sodyo API requests is <code>cms.sodyo.com</code>. All API access is via the <code>https</code> protocol.
+* An Authorization Header that includes the API Key assigned to the project.
+* A Request. When submitting data to a resource via POST or PUT, you must submit your payload in JSON.
+
+<aside class="notice">All requests to the Sodyo API must be made via HTTPS. Make sure to include the Content-Type: application/json header in all requests.</aside>
+
 ```shell
   curl -X POST "https://cms.sodyo.com/integration/rest/api/v1/content"
   -H "Content-Type: application/json"
@@ -193,13 +201,6 @@ X-AUTH-TOKEN: DEVLOPER-API-KEY
 
 > Make sure to replace `DEVLOPER-API-KEY` with your API key.
 
-An API call to the Sodyo server must include the following components:
-
-* The Host. The host for all Sodyo API requests is <code>cms.sodyo.com</code>. All API access is via the <code>https</code> protocol.
-* An Authorization Header that includes the API Key assigned to the project.
-* A Request. When submitting data to a resource via POST or PUT, you must submit your payload in JSON.
-
-<aside class="notice">All requests to the Sodyo API must be made via HTTPS. Make sure to include the Content-Type: application/json header in all requests.</aside>
 
 ## Reponses - API Response Format
 All responses delivered via the Sodyo API are returned in JSON format with UTF-8 charset. This is specified by including the content-type header in responses indicating application/json;charset=UTF-8.
@@ -223,6 +224,13 @@ See below a list of errors that may be returned by the API:
 ## Authentication & Authentication Process
 Every request made via the Sodyo API must be authenticated by including an <code>X-AUTH-TOKEN</code> header as part of the request. The <code>X-AUTH-TOKEN</code> is the API Key assigned to the developer project in the Sodyo portal.
 
+1. Every API call to the Sodyo server includes the “​X-AUTH-TOKEN​” header with the API key value.
+2. The Sodyo Server validates every API call. If one of the validation checks fail, a <code>401-Unauthorized</code> message is returned.
+3. Every request that is authenticated, is authorized with the API role and its associated permission set. The API role is eligible to access external integration API endpoints in the
+Sodyo system. Trying to access any other endpoint will return <code>403-Forbidden</code>.
+
+<aside class="notice">If API usage is disabled for the project that the API key belongs to, the server will return <code>403-Forbidden</code>.</aside>
+
 ```shell
   curl "https://cms.sodyo.com/integration/rest/api/v1/content"
   -H "Content-Type: application/json"
@@ -237,13 +245,6 @@ Every request made via the Sodyo API must be authenticated by including an <code
 ```
 > Make sure to replace `DEVLOPER-API-KEY` with your API key.
 
-1. Every API call to the Sodyo server includes the “​X-AUTH-TOKEN​” header with the API key value.
-2. The Sodyo Server validates every API call. If one of the validation checks fail, a <code>401-Unauthorized</code> message is returned.
-3. Every request that is authenticated, is authorized with the API role and its associated permission set. The API role is eligible to access external integration API endpoints in the
-Sodyo system. Trying to access any other endpoint will return <code>403-Forbidden</code>.
-
-<aside class="notice">If API usage is disabled for the project that the API key belongs to, the server will return <code>403-Forbidden</code>.</aside>
-
 # API Reference v1.0
 The Sodyo API is a RESTful API that provides a simple interface with a full set of functionality for managing content and campaigns.
 
@@ -251,6 +252,7 @@ The Sodyo API is a RESTful API that provides a simple interface with a full set 
 The Sodyo content API allows performing CRUD operations on content.
 
 ### Get All Content [GET]
+Returns all content items of type immediate action in the project
 
 > Request
 
@@ -288,9 +290,8 @@ HTTP/1.1 200 OK
 ]
 ```
 
-Returns all content items of type immediate action in the project
-
 ### Get Content By Name [GET]
+Returns a content item by name
 
 > Request
 
@@ -316,9 +317,9 @@ HTTP/1.1 200 OK
 	}
 ]
 ```
-Returns a content item by name
 
 ### Get Content By UUID [GET]
+Returns a content item by UUID
 
 > Request
 
@@ -345,9 +346,8 @@ HTTP/1.1 200 OK
 ]
 ```
 
-Returns a content item by UUID
-
 ### Create a Content Item [POST]
+Creates a new content Item.
 
 > Request
 
@@ -389,7 +389,6 @@ HTTP/1.1 200 OK
 ]
 ```
 
-Creates a new content Item.
 
 Request Attributes
 
@@ -404,6 +403,7 @@ Request Attributes
 For details about the supported actions see the [Supported Actions section](#supported-actions) and for details regarding the required parameters for each action type see the [Action Parameters section](#action-parameters).
 
 ### Update a Content Item [POST]
+Updates an existing content Item.
 
 > Request
 
@@ -445,8 +445,6 @@ HTTP/1.1 200 OK
 ]
 ```
 
-Updates an existing content Item.
-
 Request Attributes
 
 | Attribute   	| Required 	| Type      	| Description                                                            	|
@@ -461,6 +459,9 @@ For details about the supported actions see the [Supported Actions section](#sup
 
 
 ### Delete a Content Item [DELETE]
+Deletes an existing content Item.
+
+<aside class="warning">Deleted content cannot be restored. If deleted, a new content item will need to be created.</aside>
 
 > Request
 
@@ -473,15 +474,11 @@ DELETE https://cms.sodyo.com/integration/rest/api/v1/content/{content-UUID} HTTP
 HTTP/1.1 200 OK
 ```
 
-Deletes an existing content Item.
-
-<aside class="warning">Deleted content cannot be restored. If deleted, a new content item will need to be created.</aside>
-
-
 ## Campaigns API
 The Sodyo campaigns API allows performing CRUD operations on campaigns.
 
 ### Get All Campaigns [GET]
+Returns all campaigns associated with content of type immediate action in the project
 
 > Request
 
@@ -523,9 +520,8 @@ HTTP/1.1 200 OK
 ]
 ```
 
-Returns all campaigns associated with content of type immediate action in the project
-
 ### Get Campaign by Name [GET]
+Returns a campaign by Name
 
 > Request
 
@@ -553,9 +549,9 @@ HTTP/1.1 200 OK
   }
 ]
 ```
-Returns a campaign by Name
 
 ### Get Campaign by UUID [GET]
+Returns a campaign by UUID
 
 > Request
 
@@ -584,9 +580,8 @@ HTTP/1.1 200 OK
 ]
 ```
 
-Returns a campaign by UUID
-
 ### Create a Campaign [POST]
+Creates a new campaign.
 
 > Request
 
@@ -627,8 +622,6 @@ HTTP/1.1 200 OK
   }
 ```
 
-Creates a new campaign.
-
 Request Attributes
 
 | Attribute   	| Required 	| Type      	| Description                                                            	|
@@ -642,6 +635,7 @@ Request Attributes
 | enabled      	| Yes      	| string (bool) 	| true / false                                                         	|
 
 ### Update a Campaign [POST]
+Update an existing campaign.
 
 > Request
 
@@ -682,8 +676,6 @@ HTTP/1.1 200 OK
   }
 ```
 
-Update an existing campaign.
-
 Request Attributes
 
 | Attribute   	| Required 	| Type      	| Description                                                            	|
@@ -697,6 +689,9 @@ Request Attributes
 | enabled      	| Yes      	| string (bool) 	| true / false                                                         	|
 
 ### Disable a Campaign [POST]
+Disables an existing campaign.
+
+<aside class="notice">Disabling a campaign makes the campaign unavailable to users. Users scanning the associated marker will not receive any content. Note that disabling a campaign makes it unavailable to users but does not delete it. To make the campaign available to users re-enable it.</aside>
 
 > Request
 
@@ -723,11 +718,11 @@ HTTP/1.1 200 OK
 }
 ```
 
-Disables an existing campaign.
-
-<aside class="notice">Disabling a campaign makes the campaign unavailable to users. Users scanning the associated marker will not receive any content. Note that disabling a campaign makes it unavailable to users but does not delete it. To make the campaign available to users re-enable it.</aside>
 
 ### Enable a Campaign [POST]
+Enables an existing campaign.
+
+<aside class="notice">Disabling a campaign makes the campaign unavailable to users. Users scanning the associated marker will not receive any content. Note that disabling a campaign makes it unavailable to users but does not delete it. To make the campaign available to users re-enable it.</aside>
 
 > Request
 
@@ -754,12 +749,8 @@ HTTP/1.1 200 OK
 }
 ```
 
-Enables an existing campaign.
-
-<aside class="notice">Disabling a campaign makes the campaign unavailable to users. Users scanning the associated marker will not receive any content. Note that disabling a campaign makes it unavailable to users but does not delete it. To make the campaign available to users re-enable it.</aside>
-
-
 ### Get Campaign Marker [GET]
+Provides a graphics file with the campaign marker.
 
 > Request
 
@@ -775,8 +766,6 @@ HTTP/1.1 200 OK
 Marker Binary Stream
 ```
 
-Provides a graphics file with the campaign marker.
-
 <aside class="notice">Get Campaign Marker provides an optimized graphics file for use. The file is provided in Portable Network Graphics (PNG) format, with rounded corners and a transparent background</aside>
 
 <aside class="notice">Supported sizes for both X and Y dimensions are limited between 24 and 2400 pixels. It is recommended that the marker dimensions are relative to the media that the marker is displayed on.  For example, for TV is highly recommended to use the default size 480 x 264 pixels or to keep the ratio to be inline with a standard TV screen.</aside>
@@ -786,6 +775,9 @@ Provides a graphics file with the campaign marker.
 Feel free to [contact us](mailto:portalsupport@sodyo.com) to consult on the optimal marker size.
 
 ### Delete a Campaign [DELETE]
+Deletes an existing Campaign.
+
+<aside class="warning">A deleted campaign cannot be resumed. If deleted, a new campaign will need to be created.</aside>
 
 > Request
 
@@ -798,10 +790,6 @@ DELETE https://cms.sodyo.com/integration/rest/api/v1/content/{campaign-UUID} HTT
 ```http
 HTTP/1.1 200 OK
 ```
-
-Deletes an existing Campaign.
-
-<aside class="warning">A deleted campaign cannot be resumed. If deleted, a new campaign will need to be created.</aside>
 
 # Additional Examples
 The following section provides example requests of all types.
