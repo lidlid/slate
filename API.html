@@ -1,0 +1,1729 @@
+
+<!doctype html>
+<html>
+  <head>
+    {{ standard_header_includes }}
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Sodyo API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+  	<link href="https://cdn2.hubspot.net/hubfs/3890348/Slate/screen.css" rel="stylesheet" media="screen" />
+  	<link href="https://cdn2.hubspot.net/hubfs/3890348/Slate/print.css" rel="stylesheet" media="print" />
+  	<script src="https://cdn2.hubspot.net/hubfs/3890348/Slate/all.js"></script>
+	</head>
+
+  <body class="index" data-languages="[&quot;http&quot;,&quot;shell&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+				<img src="https://cdn2.hubspot.net/hubfs/3890348/Slate/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="https://cdn2.hubspot.net/hubfs/3890348/Slate/logo.png" class="logo" alt="Logo" width="175" align="middle" />
+
+        <div class="lang-selector">
+              <a href="#" data-language-name="http">http</a>
+              <a href="#" data-language-name="shell">cURL</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#sodyo-introduction" class="toc-h1 toc-link" data-title="sodyo-introduction">Sodyo Introduction</a>
+          </li>
+          <li>
+            <a href="#about-the-sodyo-api" class="toc-h1 toc-link" data-title="about-the-sodyo-api">About the Sodyo API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="overview">Overview</a>
+ </li>
+                  <li>
+                    <a href="#api-access" class="toc-h2 toc-link" data-title="api-access">API Access</a>
+ </li>
+                  <li>
+                    <a href="#supported-functionality" class="toc-h2 toc-link" data-title="supported-functionality">Supported Functionality</a>
+ </li>
+                  <li>
+                    <a href="#supported-actions" class="toc-h2 toc-link" data-title="supported-actions">Supported Actions</a>
+ </li>
+                  <li>
+                    <a href="#action-parameters" class="toc-h2 toc-link" data-title="action-parameters">Action Parameters</a>
+ </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="getting-started">Getting Started</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#prerequisites" class="toc-h2 toc-link" data-title="prerequisites">Prerequisites</a>
+  <ul class="toc-list-h3">
+      <li>
+        <a href="#creating-an-account" class="toc-h3 toc-link" data-title="Getting Started">Creating an Account</a>
+      </li>
+      <li>
+        <a href="#creating-a-project" class="toc-h3 toc-link" data-title="Getting Started">Creating a Project</a>
+      </li>
+      <li>
+        <a href="#generating-an-api-key" class="toc-h3 toc-link" data-title="Getting Started">Generating an API Key</a>
+      </li>
+  </ul>
+ </li>
+                  <li>
+                    <a href="#api-endpoint-structure" class="toc-h2 toc-link" data-title="api-endpoint-structure">API Endpoint Structure</a>
+ </li>
+                  <li>
+                    <a href="#requests-building-an-api-call" class="toc-h2 toc-link" data-title="requests-building-an-api-call">Requests - Building an API Call</a>
+ </li>
+                  <li>
+                    <a href="#reponses-api-response-format" class="toc-h2 toc-link" data-title="reponses-api-response-format">Reponses - API Response Format</a>
+ </li>
+                  <li>
+                    <a href="#errors" class="toc-h2 toc-link" data-title="errors">Errors</a>
+ </li>
+                  <li>
+                    <a href="#authentication-amp-authentication-process" class="toc-h2 toc-link" data-title="authentication-amp-authentication-process">Authentication &amp; Authentication Process</a>
+ </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-reference-v1-0" class="toc-h1 toc-link" data-title="api-reference-v1-0">API Reference v1.0</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#content-api" class="toc-h2 toc-link" data-title="content-api">Content API</a>
+  <ul class="toc-list-h3">
+      <li>
+        <a href="#get-all-content-get" class="toc-h3 toc-link" data-title="API Reference v1.0">Get All Content [GET]</a>
+      </li>
+      <li>
+        <a href="#get-content-by-name-get" class="toc-h3 toc-link" data-title="API Reference v1.0">Get Content By Name [GET]</a>
+      </li>
+      <li>
+        <a href="#get-content-by-uuid-get" class="toc-h3 toc-link" data-title="API Reference v1.0">Get Content By UUID [GET]</a>
+      </li>
+      <li>
+        <a href="#create-a-content-item-post" class="toc-h3 toc-link" data-title="API Reference v1.0">Create a Content Item [POST]</a>
+      </li>
+      <li>
+        <a href="#update-a-content-item-post" class="toc-h3 toc-link" data-title="API Reference v1.0">Update a Content Item [POST]</a>
+      </li>
+      <li>
+        <a href="#delete-a-content-item-delete" class="toc-h3 toc-link" data-title="API Reference v1.0">Delete a Content Item [DELETE]</a>
+      </li>
+  </ul>
+ </li>
+                  <li>
+                    <a href="#campaigns-api" class="toc-h2 toc-link" data-title="campaigns-api">Campaigns API</a>
+  <ul class="toc-list-h3">
+      <li>
+        <a href="#get-all-campaigns-get" class="toc-h3 toc-link" data-title="API Reference v1.0">Get All Campaigns [GET]</a>
+      </li>
+      <li>
+        <a href="#get-campaign-by-name-get" class="toc-h3 toc-link" data-title="API Reference v1.0">Get Campaign by Name [GET]</a>
+      </li>
+      <li>
+        <a href="#get-campaign-by-uuid-get" class="toc-h3 toc-link" data-title="API Reference v1.0">Get Campaign by UUID [GET]</a>
+      </li>
+      <li>
+        <a href="#create-a-campaign-post" class="toc-h3 toc-link" data-title="API Reference v1.0">Create a Campaign [POST]</a>
+      </li>
+      <li>
+        <a href="#update-a-campaign-post" class="toc-h3 toc-link" data-title="API Reference v1.0">Update a Campaign [POST]</a>
+      </li>
+      <li>
+        <a href="#disable-a-campaign-post" class="toc-h3 toc-link" data-title="API Reference v1.0">Disable a Campaign [POST]</a>
+      </li>
+      <li>
+        <a href="#enable-a-campaign-post" class="toc-h3 toc-link" data-title="API Reference v1.0">Enable a Campaign [POST]</a>
+      </li>
+      <li>
+        <a href="#get-campaign-marker-get" class="toc-h3 toc-link" data-title="API Reference v1.0">Get Campaign Marker [GET]</a>
+      </li>
+      <li>
+        <a href="#delete-a-campaign-delete" class="toc-h3 toc-link" data-title="API Reference v1.0">Delete a Campaign [DELETE]</a>
+      </li>
+  </ul>
+ </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#additional-examples" class="toc-h1 toc-link" data-title="additional-examples">Additional Examples</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-content-get-2" class="toc-h2 toc-link" data-title="get-all-content-get">Get All Content [GET]</a>
+ </li>
+                  <li>
+                    <a href="#get-content-by-name-get-2" class="toc-h2 toc-link" data-title="get-content-by-name-get">Get Content By Name [GET]</a>
+ </li>
+                  <li>
+                    <a href="#get-content-by-uuid-get-2" class="toc-h2 toc-link" data-title="get-content-by-uuid-get">Get Content By UUID [GET]</a>
+ </li>
+                  <li>
+                    <a href="#create-a-content-item-post-2" class="toc-h2 toc-link" data-title="create-a-content-item-post">Create a Content Item [POST]</a>
+ </li>
+                  <li>
+                    <a href="#update-a-content-item-post-2" class="toc-h2 toc-link" data-title="update-a-content-item-post">Update a Content Item [POST]</a>
+ </li>
+                  <li>
+                    <a href="#delete-a-content-item-delete-2" class="toc-h2 toc-link" data-title="delete-a-content-item-delete">Delete a Content Item [DELETE]</a>
+ </li>
+                  <li>
+                    <a href="#get-all-campaigns-get-2" class="toc-h2 toc-link" data-title="get-all-campaigns-get">Get All Campaigns [GET]</a>
+ </li>
+                  <li>
+                    <a href="#get-campaign-by-name-get-2" class="toc-h2 toc-link" data-title="get-campaign-by-name-get">Get Campaign by Name [GET]</a>
+ </li>
+                  <li>
+                    <a href="#get-campaign-by-uuid-get-2" class="toc-h2 toc-link" data-title="get-campaign-by-uuid-get">Get Campaign by UUID [GET]</a>
+ </li>
+                  <li>
+                    <a href="#create-a-campaign-post-2" class="toc-h2 toc-link" data-title="create-a-campaign-post">Create a Campaign [POST]</a>
+ </li>
+                  <li>
+                    <a href="#update-a-campaign-post-2" class="toc-h2 toc-link" data-title="update-a-campaign-post">Update a Campaign [POST]</a>
+ </li>
+                  <li>
+                    <a href="#disable-a-campaign-post-2" class="toc-h2 toc-link" data-title="disable-a-campaign-post">Disable a Campaign [POST]</a>
+ </li>
+                  <li>
+                    <a href="#enable-a-campaign-post-2" class="toc-h2 toc-link" data-title="enable-a-campaign-post">Enable a Campaign [POST]</a>
+ </li>
+                  <li>
+                    <a href="#get-campaign-marker-get-2" class="toc-h2 toc-link" data-title="get-campaign-marker-get">Get Campaign Marker [GET]</a>
+ </li>
+                  <li>
+                    <a href="#delete-a-campaign-get" class="toc-h2 toc-link" data-title="delete-a-campaign-get">Delete a Campaign [GET]</a>
+ </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#sodyo-license-agreement" class="toc-h1 toc-link" data-title="sodyo-license-agreement">Sodyo License Agreement</a>
+          </li>
+          <li>
+            <a href="#support" class="toc-h1 toc-link" data-title="support">Support</a>
+          </li>
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://www.sodyo.com'>Sodyo Website</a></li>
+            <li><a href='https://github.com/lord/slate'>Documentation powered by Slate</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='sodyo-introduction'>Sodyo Introduction</h1>
+<p>Sodyo’s technology creates an interactive experience with items in the physical world. Just point your mobile phone camera at any item, place or media display assigned with a Sodyo marker and reveal layers of information, content and links.</p>
+
+<p>Sodyo enhances the TV commercial experience by strengthening the sales funnel. Viewers can interact
+immediately with the television via with their smartphone and:</p>
+
+<ul>
+<li><p>Point and Purchase – The viewer points their phone or mobile device to the TV screen; a web
+page instantly appears on their phone which allows them to purchase a product, review their order and complete the purchase if they so choose.</p></li>
+<li><p>Point and Learn More – The viewer points their phone or mobile device to the TV screen, and
+instantly receives additional information about a product or service.</p></li>
+<li><p>Point and Vote – The viewer points their phone or mobile device to the TV screen and votes for
+content choices offered on the TV – favorite singer, favorite news story or whatever poll or vote
+your TV station offers.</p></li>
+</ul>
+<h1 id='about-the-sodyo-api'>About the Sodyo API</h1>
+<p>The Sodyo API provides the mechanism to interact with the Sodyo solution directly from a customer system.</p>
+<h2 id='overview'>Overview</h2>
+<p>The Sodyo APIs enable developers to create, read, update and delete (CRUD) content and campaigns with Sodyo&#39;s Portal. These operations are available via the Portal user interface (UI), however, there are cases that a customer will want to automate the creation of content items and campaigns, via code, to tightly integrate Sodyo with customer internal workflows and systems.</p>
+<h2 id='api-access'>API Access</h2>
+<p>The Sodyo administrator must enable API support for a project to allow interacting with the Sodyo system. If the API is not enabled in your project, please feel free to contact us and <a href="mailto:portalsupport@sodyo.com">request API access</a>.</p>
+<h2 id='supported-functionality'>Supported Functionality</h2>
+<p>Version 1.0 of the Sodyo API provides the ability to perform full content and campaign management for content of type “immediate action”. <br></p>
+
+<p>The main functionality provided as part of the Sodyo API v1.0 includes:</p>
+
+<ul>
+<li>Authentication
+
+<ul>
+<li>The project administrator can configure API access keys to be used for integration with the API</li>
+<li>API authentication &amp; authorization</li>
+</ul></li>
+<li>Content Operations
+
+<ul>
+<li>Manage content of type immediate action</li>
+</ul></li>
+<li>Campaign Operations
+
+<ul>
+<li>Manage campaigns</li>
+<li>Get Sodyo marker image API</li>
+<li>Campaign activation / deactivation</li>
+</ul></li>
+<li>Error Handling</li>
+</ul>
+
+<aside class="notice">All content & campaign operations are available for immediate actions only. Content type of “Sodyo Ad” is not supported in the API at this time. Referencing content / campaigns of type SODYO AD via the API will return an error <code>404-Not Found</code>.</aside>
+<h2 id='supported-actions'>Supported Actions</h2>
+<p>Sodyo content supports enabling various actions when a marker is scanned. The table below lists the supported actions as part of the API.</p>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ADD_TO_CALENDAR</td>
+<td>Add a calendar event</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>Navigate to a URL</td>
+</tr>
+<tr>
+<td>PHONE</td>
+<td>Call a phone number</td>
+</tr>
+<tr>
+<td>NAVIGATE</td>
+<td>Navigate to an address</td>
+</tr>
+<tr>
+<td>SAVE_CONTACT</td>
+<td>Add a contact</td>
+</tr>
+<tr>
+<td>DATA</td>
+<td>Provide data to the application</td>
+</tr>
+</tbody></table>
+<h2 id='action-parameters'>Action Parameters</h2>
+<p>The table below details the parameters that can be set for each action supported by the API.</p>
+
+<table><thead>
+<tr>
+<th>Action</th>
+<th>Parameter</th>
+<th>Description</th>
+<th>Required</th>
+<th>Type</th>
+<th>Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ADD_TO_CALENDAR</td>
+<td>title</td>
+<td>Event Name</td>
+<td>Yes</td>
+<td>String</td>
+<td>Event Title</td>
+</tr>
+<tr>
+<td></td>
+<td>address</td>
+<td>Event Address</td>
+<td>No</td>
+<td>String</td>
+<td>3 Main St.</td>
+</tr>
+<tr>
+<td></td>
+<td>date</td>
+<td>Event Date</td>
+<td>Yes</td>
+<td>Epoch</td>
+<td>1525384807804</td>
+</tr>
+<tr>
+<td></td>
+<td>eventType</td>
+<td>Event Type</td>
+<td>Yes</td>
+<td>Enum  timeRange or allDay</td>
+<td>timeRange</td>
+</tr>
+<tr>
+<td></td>
+<td>time</td>
+<td>Event Time</td>
+<td>Yes if type  is TimeRange</td>
+<td>Epoch start &amp; end</td>
+<td>start : 1525384807820 end : 1525384807850</td>
+</tr>
+<tr>
+<td>URL</td>
+<td>url</td>
+<td>Target URL</td>
+<td>Yes</td>
+<td>String</td>
+<td>https://www.sodyo.com</td>
+</tr>
+<tr>
+<td>PHONE</td>
+<td>phone</td>
+<td>Target Phone #</td>
+<td>Yes</td>
+<td>String</td>
+<td>123456789</td>
+</tr>
+<tr>
+<td>NAVIGATE</td>
+<td>address</td>
+<td>Target address</td>
+<td>Yes</td>
+<td>String</td>
+<td>3 Main St.</td>
+</tr>
+<tr>
+<td>SAVE_CONTACT</td>
+<td>firstName</td>
+<td>Contact First Name</td>
+<td>Yes</td>
+<td>String</td>
+<td>Ron</td>
+</tr>
+<tr>
+<td></td>
+<td>lastName</td>
+<td>Contact Last Name</td>
+<td>No</td>
+<td>String</td>
+<td>Yagur</td>
+</tr>
+<tr>
+<td></td>
+<td>phone</td>
+<td>Contact phone</td>
+<td>No</td>
+<td>String</td>
+<td>0523334989</td>
+</tr>
+<tr>
+<td></td>
+<td>email</td>
+<td>Contact email</td>
+<td>Yes</td>
+<td>String</td>
+<td>ron@sodyo.com</td>
+</tr>
+<tr>
+<td></td>
+<td>url</td>
+<td>Contact URL</td>
+<td>Yes</td>
+<td>String</td>
+<td>https://www.sodyo.com</td>
+</tr>
+<tr>
+<td></td>
+<td>company</td>
+<td>Contact Company</td>
+<td>No</td>
+<td>String</td>
+<td>Sodyo</td>
+</tr>
+<tr>
+<td>DATA</td>
+<td>data</td>
+<td>data</td>
+<td></td>
+<td>String</td>
+<td>{&quot;data&quot;: &quot;hello&quot;}</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">For a DATA action, it may be useful to provide the data as json. In this case, the json may need to be escaped.</aside>
+
+<p>For additional information see <a href="https://www.json.org">JSON.Org</a>.</p>
+<h1 id='getting-started'>Getting Started</h1><h2 id='prerequisites'>Prerequisites</h2>
+<p>Before you can start using the Sodyo API, you need to do the following:</p>
+
+<ul>
+<li>Create an account in the Sodyo Portal</li>
+<li>Create a project in your account</li>
+<li>Have the API enabled in your project by the Sodyo administrator by <a href="mailto:portalsupport@sodyo.com">contacting us</a>.</li>
+<li>Create an API Key</li>
+</ul>
+<h3 id='creating-an-account'>Creating an Account</h3>
+<p>Create an account in the Sodyo Portal - for detailed step by step information see the <a href="https://www.sodyo.com/documentation">Sodyo Portal User Guide</a>.</p>
+<h3 id='creating-a-project'>Creating a Project</h3>
+<p>Create a project in the Sodyo Portal - for detailed step by step information see the <a href="https://www.sodyo.com/documentation">Sodyo Portal User Guide</a>.</p>
+<h3 id='generating-an-api-key'>Generating an API Key</h3>
+<p>To generate an API Key, follow the process outlined below:</p>
+
+<ol>
+<li>Navigate to the <a href="https://cms.sodyo.com">Sodyo Portal</a> and log into your account.</li>
+<li>Select your project.</li>
+<li>Click on Settings. If API access is enabled for your project, a tab titled &quot;API Integration&quot; is visible. Click the &quot;API Integration&quot; tab.</li>
+</ol>
+
+<aside class="notice">The Settings module is only available for users that have owner or admin role in the project.</aside>
+
+<p><img src="https://cdn2.hubspot.net/hubfs/3890348/Slate/APIIntScr.png" alt="API Integration Screen" /></p>
+
+<ul>
+<li>In the API integration section you will see a list of currently defined API keys for the project. The following columns are shown:
+
+<ul>
+<li>Key Name</li>
+<li>Key ID</li>
+<li>Key</li>
+</ul></li>
+</ul>
+
+<aside class="notice">Note that the Key is not displayed due to security reasons.</aside>
+
+<ol start="4">
+<li>Click the + sign to create a new API key. The Add New API Key Screen is displayed.</li>
+</ol>
+
+      <p><img src="https://cdn2.hubspot.net/hubfs/3890348/Slate/APINewScr.png" alt="API New Screen" /></p>
+
+<ol start="5">
+<li>Name your key and click "Create and View". The API Key Created Screen is displayed with the generated API key.</li>
+</ol>
+
+      <p><img src="https://cdn2.hubspot.net/hubfs/3890348/Slate/APICrtScr.png" alt="API Created Screen" /></p>
+
+<ol start="6">
+<li>Click the copy button to copy the generated key for use in your application. After the key is copied click close to return to the main screen.</li>
+</ol>
+
+<aside class="warning">Make sure to copy and save your key in a secure place for use in your code. Once the window is closed, it is not possible to view the key again.
+</aside>
+
+      <p><img src="https://cdn2.hubspot.net/hubfs/3890348/Slate/APIMainScr.png" alt="API Main Screen" /></p>
+
+<aside class="notice">It is possible to delete an API key by clicking the X button at the end of the row for the specific key. The user is prompted to verify the delete operation. Once deleted the key can not be used for API access.</aside>
+<h2 id='api-endpoint-structure'>API Endpoint Structure</h2>
+<p>The following endpoint pattern is used for all external integration API endpoints:</p>
+
+<p>/integration/rest/api/​v1/entity​/{entity-id}/action</p>
+
+<p>Where:</p>
+
+<ul>
+<li>First part​ is static prefix for all API calls (/integration/rest/api)</li>
+<li>Second part​ is the API version number (/v1)</li>
+<li>Third part​ is the entity name (/entity)</li>
+<li>Fourth part​ is entity UUID (/{enitity-id})</li>
+<li>Fifth part​ is an action (/action)</li>
+</ul>
+<h2 id='requests-building-an-api-call'>Requests - Building an API Call</h2><pre class="highlight shell tab-shell"><code>  curl -X POST <span class="s2">"https://cms.sodyo.com/integration/rest/api/v1/content"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"X-AUTH-TOKEN: DEVLOPER-API-KEY"</span>
+  -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">name</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">Call content 15</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">description</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">desc 15</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">content</span><span class="se">\"</span><span class="s2">: {</span><span class="se">\"</span><span class="s2">actionType</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">DATA</span><span class="se">\"</span><span class="s2">,</span><span class="se">\"</span><span class="s2">params</span><span class="se">\"</span><span class="s2">: {</span><span class="se">\"</span><span class="s2">data</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="s2">blah blah blah</span><span class="se">\"</span><span class="s2">}}}"</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">/integration/rest/api/v1/content</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Host</span><span class="p">:</span> <span class="s">https://cms.sodyo.com</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/json</span>
+<span class="na">X-AUTH-TOKEN</span><span class="p">:</span> <span class="s">DEVLOPER-API-KEY</span>
+<span class="s">{</span>
+<span class="s">  "name": "Content 1",</span>
+<span class="s">  "description": "description 1",</span>
+<span class="s">  "content": {</span>
+<span class="s">    "actionType": "DATA",</span>
+<span class="s">    "params": {</span>
+<span class="s">      "data": "blah blah blah"</span>
+<span class="s">    }</span>
+<span class="s">  }</span>
+<span class="s">}</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>DEVLOPER-API-KEY</code> with your API key.</p>
+</blockquote>
+
+<p>An API call to the Sodyo server must include the following components:</p>
+
+<ul>
+<li>The Host. The host for all Sodyo API requests is <code>cms.sodyo.com</code>. All API access is via the <code>https</code> protocol.</li>
+<li>An Authorization Header that includes the API Key assigned to the project.</li>
+<li>A Request. When submitting data to a resource via POST or PUT, you must submit your payload in JSON.</li>
+</ul>
+
+<aside class="notice">All requests to the Sodyo API must be made via HTTPS. Make sure to include the Content-Type: application/json header in all requests.</aside>
+<h2 id='reponses-api-response-format'>Reponses - API Response Format</h2>
+<p>All responses delivered via the Sodyo API are returned in JSON format with UTF-8 charset. This is specified by including the content-type header in responses indicating application/json;charset=UTF-8.
+The Sodyo API provides standard http response codes that indicate the status of the API request.</p>
+<h2 id='errors'>Errors</h2>
+<p>The Sodyo API provides an indication when an error condition occurs. An API call that generated an error condition will include an error code along with a description where applicable.</p>
+
+<p>See below a list of errors that may be returned by the API:</p>
+
+<table><thead>
+<tr>
+<th>Code</th>
+<th>Reason</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Validation Error</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Duplicate Name (Content, Campaign)</td>
+</tr>
+<tr>
+<td>400</td>
+<td>Bad Request</td>
+<td>Validation Error, Entity with such ID does not exist in the account</td>
+</tr>
+<tr>
+<td>401</td>
+<td>Unauthorized</td>
+<td>Trying to access the API without a valid authorization header</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>Trying to access the non existent entities</td>
+</tr>
+<tr>
+<td>404</td>
+<td>Not Found</td>
+<td>Trying to access entities which don’t belong to the API key being used</td>
+</tr>
+<tr>
+<td>507</td>
+<td>Insufficient Storage</td>
+<td>Reached account campaign limit</td>
+</tr>
+</tbody></table>
+<h2 id='authentication-amp-authentication-process'>Authentication &amp; Authentication Process</h2>
+<p>Every request made via the Sodyo API must be authenticated by including an <code>X-AUTH-TOKEN</code> header as part of the request. The <code>X-AUTH-TOKEN</code> is the API Key assigned to the developer project in the Sodyo portal.</p>
+<pre class="highlight shell tab-shell"><code>  curl <span class="s2">"https://cms.sodyo.com/integration/rest/api/v1/content"</span>
+  -H <span class="s2">"Content-Type: application/json"</span>
+  -H <span class="s2">"X-AUTH-TOKEN: DEVLOPER-API-KEY"</span>
+</code></pre><pre class="highlight http tab-http"><code><span class="err">  </span><span class="nf">GET</span> <span class="nn">/integration/rest/api/v1/content</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="s">  Host: https://cms.sodyo.com</span>
+<span class="s">  Content-Type: application/json</span>
+<span class="s">  X-AUTH-TOKEN: DEVLOPER-API-KEY</span>
+</code></pre>
+<blockquote>
+<p>Make sure to replace <code>DEVLOPER-API-KEY</code> with your API key.</p>
+</blockquote>
+
+<ol>
+<li>Every API call to the Sodyo server includes the “​X-AUTH-TOKEN​” header with the API key value.</li>
+<li>The Sodyo Server validates every API call. If one of the validation checks fail, a <code>401-Unauthorized</code> message is returned.</li>
+<li>Every request that is authenticated, is authorized with the API role and its associated permission set. The API role is eligible to access external integration API endpoints in the
+Sodyo system. Trying to access any other endpoint will return <code>403-Forbidden</code>.</li>
+</ol>
+
+<aside class="notice">If API usage is disabled for the project that the API key belongs to, the server will return <code>403-Forbidden</code>.</aside>
+<h1 id='api-reference-v1-0'>API Reference v1.0</h1>
+<p>The Sodyo API is a RESTful API that provides a simple interface with a full set of functionality for managing content and campaigns.</p>
+<h2 id='content-api'>Content API</h2>
+<p>The Sodyo content API allows performing CRUD operations on content.</p>
+<h3 id='get-all-content-get'>Get All Content [GET]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/content</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"3d9fa5f7-dcd5-4f03-ab97-2e6e6e656978"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Content1 - Phone"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Description1"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+            </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"3d7f83f7-dcd5-4f03-ab97-2e1fb9056977"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Content2 - Data"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Description2"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"DATA"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+            </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Hello World"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns all content items of type immediate action in the project</p>
+<h3 id='get-content-by-name-get'>Get Content By Name [GET]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/content?name={content-name}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"3d9fa5f7-dcd5-4f03-ab97-2e6e6e656978"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Content1 - Phone"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Description1"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+            </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns a content item by name</p>
+<h3 id='get-content-by-uuid-get'>Get Content By UUID [GET]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/content/{content-UUID}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"3d9fa5f7-dcd5-4f03-ab97-2e6e6e656978"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Content1 - Phone"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"Description1"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="err">​</span><span class="w"> </span><span class="p">,</span><span class="w">
+            </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="err">​</span><span class="w"> </span><span class="s2">"123456789"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns a content item by UUID</p>
+<h3 id='create-a-content-item-post'>Create a Content Item [POST]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/content</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test data content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blah blah blah"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3d7f83f7-dcd5-4f03-ab97-2e1fb9056977"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Call content updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"desc"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blah blah"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Creates a new content Item.</p>
+
+<p>Request Attributes</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Name</td>
+<td>Yes</td>
+<td>String</td>
+<td>Content Name</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>No</td>
+<td>String</td>
+<td>Content Description</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Yes</td>
+<td>Object</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Action Type</td>
+<td>Yes</td>
+<td>Enum</td>
+<td>Action Type: DATA, URL, PHONE, NAVIGATE, ADD_TO_CALENDAR, SAVE_CONTACT</td>
+</tr>
+<tr>
+<td>Params</td>
+<td>Yes</td>
+<td>Object</td>
+<td>Action Parameters</td>
+</tr>
+</tbody></table>
+
+<p>For details about the supported actions see the <a href="#supported-actions">Supported Actions section</a> and for details regarding the required parameters for each action type see the <a href="#action-parameters">Action Parameters section</a>.</p>
+<h3 id='update-a-content-item-post'>Update a Content Item [POST]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/content/{content-UUID}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test data content updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1 updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blah blah blah updated"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3d7f83f7-dcd5-4f03-ab97-2e1fb9056977"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test data content updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1 updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blah blah blah updated"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Updates an existing content Item.</p>
+
+<p>Request Attributes</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Name</td>
+<td>Yes</td>
+<td>String</td>
+<td>Content Name</td>
+</tr>
+<tr>
+<td>Description</td>
+<td>No</td>
+<td>String</td>
+<td>Content Description</td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Yes</td>
+<td>Object</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Action Type</td>
+<td>Yes</td>
+<td>Enum</td>
+<td>Action Type: DATA, URL, PHONE, NAVIGATE, ADD_TO_CALENDAR, SAVE_CONTACT</td>
+</tr>
+<tr>
+<td>Params</td>
+<td>Yes</td>
+<td>Object</td>
+<td>Action Parameters</td>
+</tr>
+</tbody></table>
+
+<p>For details about the supported actions see the <a href="#supported-actions">Supported Actions section</a> and for details regarding the required parameters for each action type see the <a href="#action-parameters">Action Parameters section</a>.</p>
+<h3 id='delete-a-content-item-delete'>Delete a Content Item [DELETE]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/content/{content-UUID}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight plaintext"><code>HTTP/1.1 200 OK
+</code></pre>
+<p>Deletes an existing content Item.</p>
+
+<aside class="warning">Deleted content cannot be restored. If deleted, a new content item will need to be created.</aside>
+<h2 id='campaigns-api'>Campaigns API</h2>
+<p>The Sodyo campaigns API allows performing CRUD operations on campaigns.</p>
+<h3 id='get-all-campaigns-get'>Get All Campaigns [GET]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/campaign</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"41c700f3-754c-42fe-a64b-141865829dee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TV"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85971fe1-4236-4ee0-b292-2f648c72d519"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T12:09:20.523+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11T13:38:21.666+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bdbfff6a-4eac-4476-9f9c-bb5e9382727d"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Billboard"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Stationary"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some notes"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"some address"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3d7f83f7-dcd5-4f03-ab97-2e1fb9056977"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Call content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-16T08:07:47.569+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-16T08:07:47.569+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns all campaigns associated with content of type immediate action in the project</p>
+<h3 id='get-campaign-by-name-get'>Get Campaign by Name [GET]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/campaign?name={campaign-name}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1c700f3-754c-42fe-a64b-1418658123ee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TV"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85971fe1-4236-4ee0-b292-2f648c72d519"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T12:09:20.523+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11T13:38:21.666+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns a campaign by Name</p>
+<h3 id='get-campaign-by-uuid-get'>Get Campaign by UUID [GET]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/campaign/{campaign-UUID}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f1c700f3-754c-42fe-a64b-1418658123ee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TV"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"85971fe1-4236-4ee0-b292-2f648c72d519"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T12:09:20.523+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11T13:38:21.666+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>Returns a campaign by UUID</p>
+<h3 id='create-a-campaign-post'>Create a Campaign [POST]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/campaign</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TV"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a great campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1245 East Broadway St., New York City, NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8331fe1-4236-4ee0-b292-2f648e3f4a519"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efc700f3-754c-43fe-a64b-1418656efdee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TV"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a great campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1245 East Broadway St., New York City, NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8331fe1-4236-4ee0-b292-2f648e3f4a519"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T12:09:20.523+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11T13:38:21.666+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Creates a new campaign.</p>
+
+<p>Request Attributes</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Yes</td>
+<td>String</td>
+<td>Campaign Name</td>
+</tr>
+<tr>
+<td>mediaType</td>
+<td>Yes</td>
+<td>Enum</td>
+<td>The type of media for the campaign: TV, Billboard, Digital screen, Other</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Yes</td>
+<td>Enum</td>
+<td>Marker Location: Stationary, Mobile</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>No</td>
+<td>String</td>
+<td>Campaign Notes</td>
+</tr>
+<tr>
+<td>address</td>
+<td>No</td>
+<td>String</td>
+<td>Campaign Address if applicable</td>
+</tr>
+<tr>
+<td>contentUuid</td>
+<td>Yes</td>
+<td>string</td>
+<td>UUID of the content that is associated with the campaign</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>Yes</td>
+<td>string (bool)</td>
+<td>true / false</td>
+</tr>
+</tbody></table>
+<h3 id='update-a-campaign-post'>Update a Campaign [POST]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/campaign/{campaign-UUID}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a great updated campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1245 East Broadway St., New York City, NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8331fe1-4236-4ee0-b292-2f648e3f4a519"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efc700f3-754c-43fe-a64b-1418656efdee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a great updated campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1245 East Broadway St., New York City, NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8331fe1-4236-4ee0-b292-2f648e3f4a519"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2017-06-27T12:09:20.523+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-04-11T13:38:21.666+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Update an existing campaign.</p>
+
+<p>Request Attributes</p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Required</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>Yes</td>
+<td>String</td>
+<td>Campaign Name</td>
+</tr>
+<tr>
+<td>mediaType</td>
+<td>Yes</td>
+<td>Enum</td>
+<td>The type of media for the campaign: TV, Billboard, Digital screen, Other</td>
+</tr>
+<tr>
+<td>location</td>
+<td>Yes</td>
+<td>Enum</td>
+<td>Marker Location: Stationary, Mobile</td>
+</tr>
+<tr>
+<td>notes</td>
+<td>No</td>
+<td>String</td>
+<td>Campaign Notes</td>
+</tr>
+<tr>
+<td>address</td>
+<td>No</td>
+<td>String</td>
+<td>Campaign Address if applicable</td>
+</tr>
+<tr>
+<td>contentUuid</td>
+<td>Yes</td>
+<td>string</td>
+<td>UUID of the content that is associated with the campaign</td>
+</tr>
+<tr>
+<td>enabled</td>
+<td>Yes</td>
+<td>string (bool)</td>
+<td>true / false</td>
+</tr>
+</tbody></table>
+<h3 id='disable-a-campaign-post'>Disable a Campaign [POST]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/campaign/{campaign-UUID}/enabled/false</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efc700f3-754c-43fe-a64b-1418656efdee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a great updated campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1245 East Broadway St., New York City, NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8331fe1-4236-4ee0-b292-2f648e3f4a5199"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10T17:45:53.387+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-14T13:44:58.942+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Disables an existing campaign.</p>
+
+<aside class="notice">Disabling a campaign makes the campaign unavailable to users. Users scanning the associated marker will not receive any content. Note that disabling a campaign makes it unavailable to users but does not delete it. To make the campaign available to users re-enable it.</aside>
+<h3 id='enable-a-campaign-post'>Enable a Campaign [POST]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/campaign/{campaign-UUID}/enabled/true</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="err">HTTP/</span><span class="mf">1.1</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="err">OK</span><span class="w">
+</span><span class="p">{</span><span class="w">
+    </span><span class="s2">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"efc700f3-754c-43fe-a64b-1418656efdee"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a great updated campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1245 East Broadway St., New York City, NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8331fe1-4236-4ee0-b292-2f648e3f4a5199"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"monitoring content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"createDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-10T17:45:53.387+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"updateDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-14T13:44:58.942+0000"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>Enables an existing campaign.</p>
+
+<aside class="notice">Disabling a campaign makes the campaign unavailable to users. Users scanning the associated marker will not receive any content. Note that disabling a campaign makes it unavailable to users but does not delete it. To make the campaign available to users re-enable it.</aside>
+<h3 id='get-campaign-marker-get'>Get Campaign Marker [GET]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/campaign/{campaign-UUID}/marker?width=480&amp;height=264</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+
+Marker Binary Stream
+</code></pre>
+<p>Provides a graphics file with the campaign marker.</p>
+
+<aside class="notice">Get Campaign Marker provides an optimized graphics file for use. The file is provided in Portable Network Graphics (PNG) format, with rounded corners and a transparent background</aside>
+
+<aside class="notice">Supported sizes for both X and Y dimensions are limited between 24 and 2400 pixels. It is recommended that the marker dimensions are relative to the media that the marker is displayed on.  For example, for TV is highly recommended to use the default size 480 x 264 pixels or to keep the ratio to be inline with a standard TV screen.</aside>
+
+      <p><img src="https://cdn2.hubspot.net/hubfs/3890348/Slate/Marker.png" alt="BinaryImage" /></p>
+
+<p>Feel free to <a href="mailto:portalsupport@sodyo.com">contact us</a> to consult on the optimal marker size.</p>
+<h3 id='delete-a-campaign-delete'>Delete a Campaign [DELETE]</h3>
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://cms.sodyo.com/integration/rest/api/v1/content/{campaign-UUID}</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+</code></pre>
+<blockquote>
+<p>Response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+</code></pre>
+<p>Deletes an existing Campaign.</p>
+
+<aside class="warning">A deleted campaign cannot be resumed. If deleted, a new campaign will need to be created.</aside>
+<h1 id='additional-examples'>Additional Examples</h1>
+<p>The following section provides example requests of all types.</p>
+
+<p>Parameters for all examples:</p>
+
+<ul>
+<li>Host: https://cms.sodyo.com</li>
+<li>Content-Type: application/json</li>
+<li>X-AUTH-TOKEN: DEVLOPER-API-KEY</li>
+</ul>
+<h2 id='get-all-content-get-2'>Get All Content [GET]</h2>
+<p>GET https://cms.sodyo.com/integration/rest/api/v1/content</p>
+<h2 id='get-content-by-name-get-2'>Get Content By Name [GET]</h2>
+<p>GET https://cms.sodyo.com/integration/rest/api/v1/content?name=Content1</p>
+<h2 id='get-content-by-uuid-get-2'>Get Content By UUID [GET]</h2>
+<p>GET https://cms.sodyo.com/integration/rest/api/v1/content/4cf73e6e-b59a-4f9e-883a-49ae63f38895</p>
+<h2 id='create-a-content-item-post-2'>Create a Content Item [POST]</h2>
+<p>POST https://cms.sodyo.com/integration/rest/api/v1/content</p>
+
+<blockquote>
+<p>Request Body - Data Action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test data content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blah blah blah"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - URL Action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test url content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"URL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.sodyo.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - Phone Action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test phone content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0523334989"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - Add to Calendar Action - All Day</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test add to calendar all day content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADD_TO_CALENDAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event Titel"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234 erewr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525422727804</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allDay"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - Add to Calendar Action - With Time Range</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test add to calendar time range content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADD_TO_CALENDAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event Titel"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234 erewr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525422727804</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"timeRange"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525384807804</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525388407804</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - Add Contact Action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test add contact content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVE_CONTACT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ron"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yagur"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ron@sodyo.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.sodyo.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sodyo Ltd."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='update-a-content-item-post-2'>Update a Content Item [POST]</h2>
+<p>POST https://cms.sodyo.com/integration/rest/api/v1/content/4cf73e6e-b59a-4f9e-883a-49ae63f38895</p>
+
+<blockquote>
+<p>Request Body - Data Action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test data content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DATA"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"blah blah blah"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - URL Action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test url content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"URL"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.sodyo.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - Phone Action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test phone content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PHONE"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0523334989"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - Add to Calendar Action - All Day</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test add to calendar all day content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADD_TO_CALENDAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event Titel"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234 erewr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525422727804</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"allDay"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - Add to Calendar Action - With Time Range</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test add to calendar time range content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ADD_TO_CALENDAR"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Event Titel"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234 erewr"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525422727804</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"timeRange"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"time"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"start"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525384807804</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"end"</span><span class="p">:</span><span class="w"> </span><span class="mi">1525388407804</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<blockquote>
+<p>Request Body - Add Contact Action</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test add contact content"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"description 1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"actionType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SAVE_CONTACT"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"params"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ron"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Yagur"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123456789"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ron@sodyo.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.sodyo.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sodyo Ltd."</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='delete-a-content-item-delete-2'>Delete a Content Item [DELETE]</h2>
+<p>DELETE https://cms.sodyo.com/integration/rest/api/v1/content/4cf73e6e-b59a-4f9e-883a-49ae63f38895</p>
+<h2 id='get-all-campaigns-get-2'>Get All Campaigns [GET]</h2>
+<p>GET https://cms.sodyo.com/integration/rest/api/v1/campaign</p>
+<h2 id='get-campaign-by-name-get-2'>Get Campaign by Name [GET]</h2>
+<p>GET https://cms.sodyo.com/integration/rest/api/v1/campaign?name=Campaign1</p>
+<h2 id='get-campaign-by-uuid-get-2'>Get Campaign by UUID [GET]</h2>
+<p>GET https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912</p>
+<h2 id='create-a-campaign-post-2'>Create a Campaign [POST]</h2>
+<p>POST https://cms.sodyo.com/integration/rest/api/v1/campaign</p>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TV"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a great campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1245 East Broadway St., New York City, NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8331fe1-4236-4ee0-b292-2f648e3f4a519"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='update-a-campaign-post-2'>Update a Campaign [POST]</h2>
+<p>POST https://cms.sodyo.com/integration/rest/api/v1/campaign/efc700f3-754c-43fe-a64b-1418656efdee</p>
+
+<blockquote>
+<p>Request Body</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Campaign1 updated"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"mediaType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TV"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"location"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mobile"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a great updated campaign"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1245 East Broadway St., New York City, NY"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"contentUuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8331fe1-4236-4ee0-b292-2f648e3f4a518"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"enabled"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='disable-a-campaign-post-2'>Disable a Campaign [POST]</h2>
+<p>POST https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912/enabled/false</p>
+<h2 id='enable-a-campaign-post-2'>Enable a Campaign [POST]</h2>
+<p>POST https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912/enabled/true</p>
+<h2 id='get-campaign-marker-get-2'>Get Campaign Marker [GET]</h2>
+<p>GET https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912/marker?width=480&amp;height=264</p>
+<h2 id='delete-a-campaign-get'>Delete a Campaign [GET]</h2>
+<p>DELETE https://cms.sodyo.com/integration/rest/api/v1/campaign/d35bea1b-6066-4ad1-9cc7-875bbdf0e912</p>
+<h1 id='sodyo-license-agreement'>Sodyo License Agreement</h1>
+<p>By opening the package, downloading the product or using any of its components, you are consenting to be bound by the <a href="http://cms.sodyo.com/assets/docs/SDK_License_Agreement.pdf">Sodyo license agreement</a>.</p>
+
+<p>If you do not agree to all of the terms of this agreement, do not download and install this package or proceed.</p>
+<h1 id='support'>Support</h1>
+<p>Should you have any questions or need any help, please do not hesitate to contact us at
+<a href="mailto:portalsupport@sodyo.com">Support</a>.</p>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="http">http</a>
+                <a href="#" data-language-name="shell">cURL</a>
+          </div>
+      </div>
+    </div>
+      {{ standard_footer_includes }}
+
+  </body>
+</html>
