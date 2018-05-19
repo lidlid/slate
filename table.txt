@@ -14,4 +14,4 @@
 |  | email | Contact email | Yes | String | ron@sodyo.com |
 |  | url | Contact URL | Yes | String | https://www.sodyo.com |
 |  | company | Contact Company | No | String | Sodyo |
-| DATA | data | data |  | String (JSON / XML) |  |
+| DATA | data | data |  | String (JSON / XML) | \"data\": \"hello\"|
